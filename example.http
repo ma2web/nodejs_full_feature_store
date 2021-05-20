@@ -1,0 +1,143 @@
+### register ### 
+POST http://localhost:3044/api/user/register HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "firstName": "user2",
+    "lastName": "user2",
+    "email": "user2@user2.com",
+    "countryCode": "98",
+    "phoneNumber": "9363456781",
+    "password": "qweasd",
+    "role": "user"
+}
+
+### login ### 
+POST http://localhost:8989/api/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "asd@asd.com",
+    "password": "qweasd"
+}
+
+### me ### 
+GET http://localhost:3044/api/user/me HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+### send code ### 
+GET http://localhost:3044/api/user/sendCode HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+### verify code ### 
+POST http://localhost:3044/api/user/verifyCode HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "code": 7636,
+    "phoneNumber": "9102220154"
+}
+
+### get products ### 
+GET http://localhost:3044/api/products/602ffcc20796564cd9f22376 HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+### get product by id ### 
+GET http://localhost:3044/api/product/603023807f7f6171e58c75a3 HTTP/1.
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+### create product ### 
+POST http://localhost:3044/api/product HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "name": "product a",
+    "description": "description for product a",
+    "price": 35,
+    "inStock": false
+}
+
+### update product ### 
+PUT http://localhost:3044/api/product/603024dd3e1eb2732d279f5f HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "name": "product b",
+    "inStock": true
+}
+
+### delete product ### 
+DELETE http://localhost:3044/api/product/603024dd3e1eb2732d279f5f HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+### post comment ### 
+POST http://localhost:3044/api/product/comment/603d4e90a18e849bec01326d HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "body": "this is a test comment",
+    "rate": 5
+}
+
+### update comment ### 
+PUT http://localhost:3044/api/product/603023807f7f6171e58c75a3/comment/603295a6094bd26ff05e0cee HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "body": "Excellant"
+}
+
+### remove comment ### 
+DELETE http://localhost:3044/api/product/603023807f7f6171e58c75a3/comment/603295a6094bd26ff05e0cef HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+### add category to product ### 
+POST http://localhost:3044/api/category HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "name": "Mobile",
+    "description": "Description of this category"
+}
+
+### update category ### 
+PUT http://localhost:3044/api/product/603023807f7f6171e58c75a3/category/603298719ede6671b85c204d HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "name": "Computer"
+}
+
+### remove category ### 
+DELETE http://localhost:3044/api/product/603023807f7f6171e58c75a3/category/603298719ede6671b85c204d HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+### add tag to product ### 
+POST http://localhost:3044/api/product/tag/603023807f7f6171e58c75a3 HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "tag": "tech"
+}
+
+### remove tag from product ### 
+DELETE http://localhost:3044/api/product/tag/603023807f7f6171e58c75a3 HTTP/1.1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM1Nzg5ZjI3ZTU3ZDFmMGE5NWIyNWYiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMjM0NTY3ODksInJvbGUiOiJhZG1pbiIsImlhdCI6MTYxNTY0MzcyNn0.rku36j-GNQsY98YmAn6eN2bUxcJ8L30KzTsh3WUbTMA
+
+{
+    "tag": "mobile"
+}

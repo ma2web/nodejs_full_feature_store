@@ -1,0 +1,6 @@
+{
+    "PORT": 8989,
+    "mongoURI": "mongodb://localhost:27017/multivendor",
+    "jwtSecret": "zxcasdqwe123!@#$%^&&(()*&^%$##@$Yuihsnd",
+    "kaveNegarApiKey": "5356717A754B6A456D4F7868484A512F53753978394151373768644A6B5A567852446F71536B79515576453D"
+}

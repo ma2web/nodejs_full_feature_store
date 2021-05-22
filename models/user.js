@@ -39,6 +39,7 @@ schema.methods.generateAuthToken = function () {
     countryCode: this.countryCode,
     phoneNumber: this.phoneNumber,
     role: this.role,
+    socketId: this.socketId,
   };
 
   return jwt.sign(data, config.get("jwtSecret"));

@@ -8,7 +8,9 @@ module.exports = {
     if (!user) {
       return res.status(401).send("Access Denied");
     }
-    let orders = await Order.find({ user: user._id });
+    let orders = await Order.find({ user: user._id }).populate({
+      path: "items.item",
+    });
 
     return res.json(orders);
   },
@@ -76,5 +78,16 @@ module.exports = {
         return res.send(data);
       }
     );
+  },
+  customerOrder: async (req, res) => {
+    let user = req.user;
+    if (!user) {
+      return res.status(401).send("Access Denied");
+    }
+
+    let orders = await Order.find({ customer: user._id }).populate({
+      path: "items.item",
+    });
+    return res.json(orders);
   },
 };

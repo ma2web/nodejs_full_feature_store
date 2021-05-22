@@ -4,6 +4,7 @@ const { s, rs, rref, rn } = require("../utils/mongo");
 var schema = new mongoose.Schema(
   {
     user: rref("user"),
+    customer: rref("user"),
     status: {
       ...s,
       default: "pending",

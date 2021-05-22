@@ -101,8 +101,30 @@ mongoose.connect(
         next();
       });
 
-      socket.on("chat message", (msg) => {
-        io.emit("chat message", msg);
+      socket.on("join", function (data) {
+        let { conversationId, fromUser, toUser, text } = data;
+        socket.join(socketId);
+      });
+
+      socket.on("send message", function (data) {
+        console.log("sending room post", data.room);
+        socket.broadcast.to(data.room).emit("conversation private post", {
+          message: data.message,
+        });
+      });
+
+      socket.on("sendMessage", async (data) => {
+        let { fromUser, toUser, text } = data;
+        io.emit("receiveMessage", {});
+
+        let Convarsation = require("./models/conversation");
+
+        let newConversation = new Convarsation({
+          fromUser,
+          toUser,
+          text,
+        });
+        await newConversation.save();
       });
     });
   }

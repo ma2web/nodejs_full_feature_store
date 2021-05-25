@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const api = \"http://localhost:8989\";","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/domains/api.js"],"names":["api"],"mappings":"AAAA,OAAO,MAAMA,GAAG,GAAG,uBAAZ","sourcesContent":["export const api = \"http://localhost:8989\";\n"]},"metadata":{},"sourceType":"module"}

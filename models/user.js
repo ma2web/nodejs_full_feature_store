@@ -7,6 +7,7 @@ var schema = new mongoose.Schema(
   {
     firstName: s,
     lastName: s,
+    username: s,
     name: s,
     email: {
       ...rs,
@@ -18,6 +19,7 @@ var schema = new mongoose.Schema(
       unique: true,
     },
     password: rs,
+    address: s,
     role: {
       ...s,
       default: "user",
@@ -26,6 +28,12 @@ var schema = new mongoose.Schema(
     active: Boolean,
     address: s,
     socketId: s,
+    store: {
+      name: s,
+      description: s,
+      address: s,
+      rating: n,
+    },
   },
   { timestamps: true }
 );
@@ -38,8 +46,10 @@ schema.methods.generateAuthToken = function () {
     email: this.email,
     countryCode: this.countryCode,
     phoneNumber: this.phoneNumber,
+    address: this.address,
     role: this.role,
     socketId: this.socketId,
+    store: this.store,
   };
 
   return jwt.sign(data, config.get("jwtSecret"));

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default } from \"./Desk\";","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/layout/CI/Layout/components/desk/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,QAAxB","sourcesContent":["export { default } from \"./Desk\";\n"]},"metadata":{},"sourceType":"module"}

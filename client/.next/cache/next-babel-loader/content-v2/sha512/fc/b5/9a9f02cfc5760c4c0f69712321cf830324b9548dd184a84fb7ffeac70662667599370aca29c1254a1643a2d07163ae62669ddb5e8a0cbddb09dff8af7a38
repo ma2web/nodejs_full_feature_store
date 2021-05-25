@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport SignInPage from \"domains/Auth/components/SignInPage\";\n\nconst SignIn = () => {\n  return /*#__PURE__*/_jsx(SignInPage, {});\n};\n\nexport default SignIn;","map":null,"metadata":{},"sourceType":"module"}

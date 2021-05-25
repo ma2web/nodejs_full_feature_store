@@ -19,12 +19,14 @@ const {
   removeColor,
   filter,
   uploadImage,
+  categoryProduct,
 } = require("../controllers/product");
 
 const auth = require("../middlwares/auth");
 const admin = require("../middlwares/admin");
 
 router.get("/api/products/:userId*?", getAll);
+router.get("/api/procat/:catId", categoryProduct);
 router.get("/api/product/:id", getOne);
 router.post("/api/product", auth, create);
 router.delete("/api/product/:id", auth, remove);

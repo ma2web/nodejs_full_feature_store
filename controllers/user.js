@@ -79,20 +79,14 @@ module.exports = {
 
     const token = user.generateAuthToken();
 
-    let data = pick(user, [
-      "_id",
-      "firstName",
-      "lastName",
-      "email",
-      "countryCode",
-      "phoneNumber",
-      "role",
-    ]);
-
-    res.header("x-auth-token", token).send({ ...data, token });
+    res.header("x-auth-token", token).send({ ...user, token });
   },
   me: async (req, res) => {
-    res.send(req.user);
+    let id = req.user._id;
+
+    let user = await User.findById(id);
+
+    res.send(user);
   },
   userRegister: async (req, res) => {
     let { email, password } = req.body;
@@ -138,5 +132,57 @@ module.exports = {
     let data = pick(user, ["_id", "name", "email", "phoneNumber"]);
 
     res.header("x-auth-token", token).send({ ...data, token });
+  },
+  getAllStores: async (req, res) => {
+    const admins = await User.find({ role: "admin" });
+
+    let stores = admins.map((item) => {
+      let {
+        _id,
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        countryCode,
+        admins,
+        store,
+      } = item;
+      return {
+        _id,
+        name: store.name,
+        address: store.address,
+        rating: store.rating,
+        owner: {
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          countryCode,
+          admins,
+        },
+      };
+    });
+
+    res.send(stores);
+  },
+  update: async (req, res) => {
+    let { id } = req.params;
+
+    if (id !== req.user._id) {
+      return res.status(401).send("permission denied");
+    }
+
+    console.log(req.body);
+    await User.updateOne(
+      { _id: req.user._id },
+      {
+        $set: req.body,
+      },
+      (err, data) => {
+        if (err) return res.status(404).send(`Error: ` + err);
+
+        return res.send("user has been updated");
+      }
+    );
   },
 };

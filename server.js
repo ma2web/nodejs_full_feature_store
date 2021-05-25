@@ -18,6 +18,8 @@ const UserRoutes = require("./routes/user");
 const ProductRoutes = require("./routes/product");
 const CategoryRoutes = require("./routes/category");
 const OrderRoutes = require("./routes/order");
+const CardRoutes = require("./routes/card");
+const FavoriteRoutes = require("./routes/favorite");
 // init app
 const app = express();
 const http = require("http");
@@ -36,6 +38,9 @@ app.use(UserRoutes);
 app.use(ProductRoutes);
 app.use(CategoryRoutes);
 app.use(OrderRoutes);
+app.use(CardRoutes);
+app.use(CardRoutes);
+app.use(FavoriteRoutes);
 
 // error middleware
 app.use(ErrorMiddleware);
@@ -61,71 +66,63 @@ app.get("/*", function (req, res) {
 });
 
 // connect to db
-mongoose.connect(
-  config.get("mongoURI"),
-  {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) console.log(err.message);
+mongoose.connect(config.get("mongoURI"), {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: true,
+  useUnifiedTopology: true,
+});
 
-    console.log("MongoDB Connected");
+const port = 8989;
 
-    const port = config.get("PORT") || 6969;
-    // listen to server
-    server.listen(port, (err) => {
-      if (err) console.log(err.message);
-      console.log(`Listen To ${port}`);
+server.listen(port, (err) => {
+  if (err) console.log(err.message);
+  console.log(`Listen To ${port}`);
+});
+
+io.on("connection", (socket) => {
+  io.use((socket, next) => {
+    const token = socket.handshake.auth.token;
+
+    const user = jwt.verify(token, config.get("jwtSecret"));
+
+    if (!user) {
+      const err = new Error("not authorized");
+      err.data = { content: "Please retry later" }; // additional details
+      next(err);
+    } else {
+      socket.broadcast.emit("welcome to app socket");
+      console.log(`${user.email} connected to socket`);
+      socket.on("disconnect", () => {
+        console.log("user disconnected");
+      });
+    }
+    next();
+  });
+
+  socket.on("join", function (data) {
+    let { conversationId, fromUser, toUser, text } = data;
+    socket.join(socketId);
+  });
+
+  socket.on("send message", function (data) {
+    console.log("sending room post", data.room);
+    socket.broadcast.to(data.room).emit("conversation private post", {
+      message: data.message,
     });
+  });
 
-    io.on("connection", (socket) => {
-      io.use((socket, next) => {
-        const token = socket.handshake.auth.token;
+  socket.on("sendMessage", async (data) => {
+    let { fromUser, toUser, text } = data;
+    io.emit("receiveMessage", {});
 
-        const user = jwt.verify(token, config.get("jwtSecret"));
+    let Convarsation = require("./models/conversation");
 
-        if (!user) {
-          const err = new Error("not authorized");
-          err.data = { content: "Please retry later" }; // additional details
-          next(err);
-        } else {
-          socket.broadcast.emit("welcome to app socket");
-          console.log(`${user.email} connected to socket`);
-          socket.on("disconnect", () => {
-            console.log("user disconnected");
-          });
-        }
-        next();
-      });
-
-      socket.on("join", function (data) {
-        let { conversationId, fromUser, toUser, text } = data;
-        socket.join(socketId);
-      });
-
-      socket.on("send message", function (data) {
-        console.log("sending room post", data.room);
-        socket.broadcast.to(data.room).emit("conversation private post", {
-          message: data.message,
-        });
-      });
-
-      socket.on("sendMessage", async (data) => {
-        let { fromUser, toUser, text } = data;
-        io.emit("receiveMessage", {});
-
-        let Convarsation = require("./models/conversation");
-
-        let newConversation = new Convarsation({
-          fromUser,
-          toUser,
-          text,
-        });
-        await newConversation.save();
-      });
+    let newConversation = new Convarsation({
+      fromUser,
+      toUser,
+      text,
     });
-  }
-);
+    await newConversation.save();
+  });
+});

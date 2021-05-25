@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default } from './SignUpPage';","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/domains/Auth/components/SignUpPage/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,cAAxB","sourcesContent":["export { default } from './SignUpPage'\n"]},"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default } from \"./Orders\";","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/domains/Orders/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,UAAxB","sourcesContent":["export { default } from \"./Orders\";\n"]},"metadata":{},"sourceType":"module"}

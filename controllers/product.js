@@ -279,4 +279,13 @@ module.exports = {
       }
     );
   },
+  categoryProduct: async (req, res) => {
+    let { catId } = req.params;
+
+    let result = await Product.find({ categories: { $in: [catId] } }).populate(
+      "categories"
+    );
+
+    res.send(result);
+  },
 };

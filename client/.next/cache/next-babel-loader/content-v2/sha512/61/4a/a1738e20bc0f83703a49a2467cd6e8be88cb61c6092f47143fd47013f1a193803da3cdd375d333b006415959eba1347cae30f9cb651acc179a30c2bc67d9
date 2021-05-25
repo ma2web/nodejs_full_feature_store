@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { makeGolStyles } from \"theme\";\nexport var useOrdersStyles = makeGolStyles(function (_ref) {\n  var palette = _ref.palette,\n      spacing = _ref.spacing;\n  return {\n    root: {}\n  };\n}, {\n  name: \"orders\"\n});\nexport default useOrdersStyles;","map":null,"metadata":{},"sourceType":"module"}

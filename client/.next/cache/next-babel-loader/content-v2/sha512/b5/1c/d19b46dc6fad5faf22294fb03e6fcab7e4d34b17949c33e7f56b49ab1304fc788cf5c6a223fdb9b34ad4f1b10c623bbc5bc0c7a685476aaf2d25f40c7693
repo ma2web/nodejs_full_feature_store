@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { defineMessages } from \"react-intl\";\nconst scope = \"panel.dashboard\";\nconst DashboardMessages = defineMessages({\n  myDesk: {\n    id: `${scope}.myDesk`,\n    defaultMessage: \"My Desk\"\n  }\n});\nexport default DashboardMessages;","map":null,"metadata":{},"sourceType":"module"}

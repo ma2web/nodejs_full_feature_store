@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport Orders from \"domains/Orders\";\n\nconst OrdersPage = () => {\n  return /*#__PURE__*/_jsx(Orders, {});\n};\n\nOrdersPage.Layout = true;\nexport default OrdersPage;","map":null,"metadata":{},"sourceType":"module"}

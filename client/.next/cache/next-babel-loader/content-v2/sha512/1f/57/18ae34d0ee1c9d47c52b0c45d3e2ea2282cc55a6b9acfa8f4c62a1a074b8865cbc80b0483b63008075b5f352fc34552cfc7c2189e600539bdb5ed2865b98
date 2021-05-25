@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default } from \"./Categories\";","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/domains/Categories/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,cAAxB","sourcesContent":["export { default } from \"./Categories\";\n"]},"metadata":{},"sourceType":"module"}

@@ -1,0 +1,7 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "projectId": "fm.commerce",
+  "viewportWidth": 1540,
+  "viewportHeight": 741,
+  "retries": 1
+}

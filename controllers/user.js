@@ -188,9 +188,11 @@ module.exports = {
         countryCode,
         admins,
         store,
+        avatar,
       } = item;
       return {
         _id,
+        avatar,
         name: store.name,
         address: store.address,
         rating: store.rating,

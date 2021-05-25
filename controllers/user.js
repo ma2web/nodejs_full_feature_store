@@ -111,7 +111,17 @@ module.exports = {
 
     const token = user.generateAuthToken();
 
-    res.header("x-auth-token", token).send({ ...user, token });
+    let data = pick(user, [
+      "_id",
+      "firstName",
+      "lastName",
+      "email",
+      "countryCode",
+      "phoneNumber",
+      "role",
+    ]);
+
+    res.header("x-auth-token", token).send({ ...data, token });
   },
   me: async (req, res) => {
     let id = req.user._id;
@@ -228,14 +238,12 @@ module.exports = {
           fileFilter,
           limits: { fileSize: uploadFileSize },
         }).single("avatar")(req, res, (err) => {
-          Product.findById(id, (err, data) => {
-            if (!data.images) {
-              data.images = [];
-            }
-            data.images.push(req.file.filename);
-            Product.updateOne(
+          User.findById(id, (err, data) => {
+            data.avatar = req.file.filename;
+
+            User.updateOne(
               { _id: id },
-              { $set: { images: data.images } },
+              { $set: { avatar: data.avatar } },
               (err, result) => {
                 return res.send(req.file);
               }

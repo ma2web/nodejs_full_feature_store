@@ -28,6 +28,7 @@ var schema = new mongoose.Schema(
     active: Boolean,
     address: s,
     socketId: s,
+    avatar: s,
     store: {
       name: s,
       description: s,

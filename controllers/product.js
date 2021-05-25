@@ -39,9 +39,11 @@ module.exports = {
     let userId = req.params.userId;
     let products;
     if (userId) {
-      products = await Product.find({ user: userId }).populate("categories");
+      products = await Product.find({ user: userId })
+        .populate("categories")
+        .populate("user");
     } else {
-      products = await Product.find({}).populate("categories");
+      products = await Product.find({}).populate("categories").populate("user");
     }
     return res.json(products);
   },

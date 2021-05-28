@@ -22,8 +22,8 @@ router.post("/api/user/signin", userLogin);
 router.get("/api/user/me", auth, me);
 router.put("/api/user/:id", auth, update);
 router.post("/api/user/upload/:id", upload);
-router.post("/api/user/otp", auth, sendCode);
-router.post("/api/user/verify", auth, verifyCode);
+router.post("/api/user/otp", sendCode);
+router.post("/api/user/verify", verifyCode);
 router.get("/api/stores", getAllStores);
 
 module.exports = router;

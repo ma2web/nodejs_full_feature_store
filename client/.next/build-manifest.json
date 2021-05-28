@@ -24,10 +24,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/orders": [
+    "/create-product": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/orders.js"
+      "static/chunks/pages/create-product.js"
     ],
     "/signIn": [
       "static/chunks/webpack.js",

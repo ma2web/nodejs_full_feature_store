@@ -4,6 +4,7 @@ import axios from "axios";
 import { api } from "domains/api";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import useProductsStyle from "../useProductsStyles";
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
@@ -26,6 +27,7 @@ const AddProduct = () => {
   const [imageFileName, setImageFileName] = useState(null);
 
   let { push } = useRouter();
+  const classes = useProductsStyle();
 
   useEffect(() => {
     axios
@@ -40,8 +42,8 @@ const AddProduct = () => {
   }, []);
 
   return (
-    <div>
-      <div>
+    <div className={classes.parent}>
+      <div className={classes.child}>
         <div>
           <h3>Name</h3>
         </div>
@@ -54,8 +56,7 @@ const AddProduct = () => {
           />
         </div>
       </div>
-      <br />
-      <div>
+      <div className={classes.child}>
         <div>
           <h3>Description</h3>
         </div>
@@ -70,8 +71,7 @@ const AddProduct = () => {
           />
         </div>
       </div>
-      <br />
-      <div>
+      <div className={classes.child}>
         <div>
           <h3>Price</h3>
         </div>
@@ -86,8 +86,7 @@ const AddProduct = () => {
           />
         </div>
       </div>
-      <br />
-      <div>
+      <div className={classes.child}>
         <div>
           <h3>New Price</h3>
         </div>
@@ -102,8 +101,7 @@ const AddProduct = () => {
           />
         </div>
       </div>
-      <br />
-      <div>
+      <div className={classes.child}>
         <div>
           <h3>Product Images</h3>
         </div>
@@ -139,9 +137,7 @@ const AddProduct = () => {
           </div>
         </div>
       </div>
-      <br />
-      {/* categories */}
-      <div>
+      <div className={classes.child}>
         <div>
           <h3>Categories</h3>
         </div>
@@ -188,9 +184,7 @@ const AddProduct = () => {
           </div>
         </div>
       </div>
-      <br />
-      {/* stock */}
-      <div>
+      <div className={classes.child}>
         <div>
           <h3>In Stock:</h3>
         </div>
@@ -205,9 +199,7 @@ const AddProduct = () => {
           />
         </div>
       </div>
-      <br />
-      {/* size */}
-      <div>
+      <div className={classes.child}>
         <div>
           <h3>Sizes:</h3>
         </div>
@@ -219,7 +211,7 @@ const AddProduct = () => {
                     {el?.size} - {el?.price}
                   </li>
                 ))
-              : "No Sizes Added"}
+              : null}
           </ul>
         </div>
         <div>
@@ -261,8 +253,7 @@ const AddProduct = () => {
           </div>
         </div>
       </div>
-      <br />
-      <div>
+      <div className={classes.child}>
         <Button
           fullWidth
           color="primary"

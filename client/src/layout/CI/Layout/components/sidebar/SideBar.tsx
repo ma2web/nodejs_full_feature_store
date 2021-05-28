@@ -32,8 +32,18 @@ export const SideBar = ({
         <div className={classes.logo}>
           <LogoIcon />
         </div>
-
         <div className={classes.menuItems}>
+          <div className={classes.menuItem} onClick={() => setSelected(0)}>
+            <div
+              className={selected === 0 ? classes.active : classes.deActive}
+              onClick={() => setOpenDesk(!openDesk)}
+            >
+              <CardsIcon />
+            </div>
+          </div>
+        </div>
+
+        {/* <div className={classes.menuItems}>
           {[...Array(5)].map((el, i) => (
             <div className={classes.menuItem} onClick={() => setSelected(i)}>
               {i === 0 ? (
@@ -73,7 +83,7 @@ export const SideBar = ({
               ) : null}
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

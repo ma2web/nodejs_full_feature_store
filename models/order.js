@@ -14,7 +14,6 @@ var schema = new mongoose.Schema(
       {
         item: rref("product"),
         count: rn,
-        color: rs,
         size: rs,
       },
     ],

@@ -14,7 +14,7 @@ const EditProduct = ({ product, setProduct }) => {
   const [file, setFile] = useState("");
   const [imageFileName, setImageFileName] = useState(null);
 
-  let { query } = useRouter();
+  let { query, push } = useRouter();
 
   useEffect(() => {
     axios
@@ -258,7 +258,7 @@ const EditProduct = ({ product, setProduct }) => {
           variant="outlined"
           onClick={() => {
             let data = product;
-            data.user = product.user._id;
+            data.user = product?.user?._id;
             if (data.stock > 0) {
               data.inStock = true;
             } else {
@@ -274,7 +274,17 @@ const EditProduct = ({ product, setProduct }) => {
                   "x-auth-token": localStorage.token,
                 },
               })
-              .then((res) => console.log(res))
+              .then((res) => {
+                var formdata = new FormData();
+                formdata.append("image", imageFileName);
+                axios
+                  .post(`${api}/api/product/upload/${data?._id}`, formdata, {
+                    headers: {
+                      "x-auth-token": localStorage.token,
+                    },
+                  })
+                  .then((res) => push("/products"));
+              })
               .catch((err) => console.log(err));
           }}
           size="large"

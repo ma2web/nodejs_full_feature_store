@@ -8,9 +8,9 @@ module.exports = {
     if (!user) {
       return res.status(401).send("Access Denied");
     }
-    let orders = await Order.find({ store: user._id }).populate({
-      path: "items.item",
-    });
+    let orders = await Order.find({ store: user._id })
+      .populate("customer")
+      .populate("items.item");
 
     return res.json(orders);
   },
@@ -29,11 +29,12 @@ module.exports = {
       });
   },
   create: async (req, res) => {
+    let customer = req.user;
     let { error } = createValidator(req.body);
 
     if (error) return res.status(400).send({ message: error.message });
 
-    let order = new Order(req.body);
+    let order = new Order({ ...req.body, customer: customer._id });
 
     order = await order.save();
     return res.send(order);
@@ -60,10 +61,6 @@ module.exports = {
   },
   update: async (req, res) => {
     let { id } = req.params;
-
-    let { error } = updateValidator({ ...req.body, id });
-    if (error) return res.status(400).send({ message: error.message });
-
     await Order.updateOne(
       {
         _id: id,

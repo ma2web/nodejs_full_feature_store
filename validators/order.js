@@ -5,6 +5,8 @@ Joi.objectId = require("joi-objectid")(Joi);
 module.exports = {
   createValidator: (data) => {
     const schema = Joi.object({
+      store: Joi.string(),
+      customer: Joi.objectId(),
       items: Joi.array(),
     });
 
@@ -12,9 +14,7 @@ module.exports = {
   },
   updateValidator: (data) => {
     const schema = Joi.object({
-      id: Joi.objectId(),
       status: Joi.string(),
-      items: Joi.array(),
     });
 
     return schema.validate(data);

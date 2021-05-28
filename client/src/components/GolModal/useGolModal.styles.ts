@@ -7,7 +7,7 @@ export default makeGolStyles<IStyleProps>(({ palette, spacing }) => ({
     position: "fixed",
     top: 0,
     right: 0,
-    width: "calc(100vw - 84px)",
+    width: "100%",
     height: "100vh",
     zIndex: 9,
     background: "rgba(0,0,0,.5)",
@@ -17,7 +17,6 @@ export default makeGolStyles<IStyleProps>(({ palette, spacing }) => ({
   },
   modal: {
     width: "90%",
-    minHeight: "80%",
     background: palette.surface.default,
     borderRadius: 12,
     padding: spacing(6),

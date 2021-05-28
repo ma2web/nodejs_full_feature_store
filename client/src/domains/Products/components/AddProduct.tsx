@@ -284,7 +284,23 @@ const AddProduct = () => {
                   "x-auth-token": localStorage.token,
                 },
               })
-              .then((res) => console.log(res))
+              .then((res) => {
+                if (res?.data) {
+                  var formdata = new FormData();
+                  formdata.append("image", imageFileName);
+                  axios
+                    .post(
+                      `${api}/api/product/upload/${res?.data?._id}`,
+                      formdata,
+                      {
+                        headers: {
+                          "x-auth-token": localStorage.token,
+                        },
+                      }
+                    )
+                    .then((res) => push("/products"));
+                }
+              })
               .catch((err) => console.log(err));
           }}
           size="large"

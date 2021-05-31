@@ -17,6 +17,8 @@ const ChangeStatus = ({
   const [value, setValue] = useState(null);
   // pending proccessing shipped delivered cancelled
 
+  console.log(order);
+
   useEffect(() => setValue(status), [status]);
   return (
     <div style={{ width: 200 }}>

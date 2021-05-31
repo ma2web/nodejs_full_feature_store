@@ -19,7 +19,7 @@ module.exports = {
     if (!store || !product)
       return res.status(400).send("product and store id is required");
 
-    let c = await Favorite.findOne({ product });
+    let c = await Favorite.findOne({ product, customer: _id });
     if (c) return res.status(400).send("already exist in favorite list");
 
     let favorite = new Favorite({ ...req.body, customer: _id });

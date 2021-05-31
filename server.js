@@ -25,7 +25,15 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server);
+const io = new Server(server, {
+  pingInterval: 10000,
+  pingTimeout: 5000,
+  maxHttpBufferSize: 1e4,
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 
 //  middlewares
 app.use(cors());
@@ -62,7 +70,7 @@ process.on("unhandledRejection", (error) => winston.error(error.message));
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.static(path.join(__dirname, "./views")));
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./views", "index.html"));
+  res.sendFile(path.join(__dirname, "./views", "chat.html"));
 });
 
 // connect to db
@@ -80,7 +88,7 @@ server.listen(port, (err) => {
   console.log(`Listen To ${port}`);
 
   io.on("connection", (socket) => {
-    io.use((socket, next) => {
+    io.use(async (socket, next) => {
       const token = socket.handshake.auth.token;
 
       const user = jwt.verify(token, config.get("jwtSecret"));
@@ -90,8 +98,18 @@ server.listen(port, (err) => {
         err.data = { content: "Please retry later" }; // additional details
         next(err);
       } else {
-        socket.broadcast.emit("welcome to app socket");
-        console.log(`${user.email} connected to socket`);
+        let User = require("./models/user");
+        await User.updateOne(
+          {
+            _id: user._id,
+          },
+          {
+            $set: { socketId: socket.id },
+          }
+        )
+          .then(() => console.log(`${user.email} connected to socket`))
+          .catch((err) => console.log(`Error: ${err.message}`));
+
         socket.on("disconnect", () => {
           console.log("user disconnected");
         });

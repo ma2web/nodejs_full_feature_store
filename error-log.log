@@ -381,3 +381,61 @@
 {"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
 {"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
 {"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"jwt malformed","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"jwt malformed","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"level":"error","message":"Operation `users.findOne()` buffering timed out after 10000ms Operation `users.findOne()` buffering timed out after 10000ms","stack":"MongooseError: Operation `users.findOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mohammad/projects/dorreh/market multi/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:185:20)\n    at listOnTimeout (internal/timers.js:554:17)\n    at processTimers (internal/timers.js:497:7)"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"jwt must be provided","level":"error"}
+{"message":"jwt must be provided","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"level":"error","message":"Operation `products.find()` buffering timed out after 10000ms Operation `products.find()` buffering timed out after 10000ms","stack":"MongooseError: Operation `products.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mohammad/projects/dorreh/market multi/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:185:20)\n    at listOnTimeout (internal/timers.js:554:17)\n    at processTimers (internal/timers.js:497:7)"}
+{"level":"error","message":"Operation `users.findOne()` buffering timed out after 10000ms Operation `users.findOne()` buffering timed out after 10000ms","stack":"MongooseError: Operation `users.findOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mohammad/projects/dorreh/market multi/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:185:20)\n    at listOnTimeout (internal/timers.js:554:17)\n    at processTimers (internal/timers.js:497:7)"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"errorInfo":{"code":"app/duplicate-app","message":"The default Firebase app already exists. This means you called initializeApp() more than once without providing an app name as the second argument. In most cases you only need to call initializeApp() once. But if you do want to initialize multiple apps, pass a second argument to initializeApp() to give each app a unique name."},"codePrefix":"app","level":"error","message":"The default Firebase app already exists. This means you called initializeApp() more than once without providing an app name as the second argument. In most cases you only need to call initializeApp() once. But if you do want to initialize multiple apps, pass a second argument to initializeApp() to give each app a unique name. The default Firebase app already exists. This means you called initializeApp() more than once without providing an app name as the second argument. In most cases you only need to call initializeApp() once. But if you do want to initialize multiple apps, pass a second argument to initializeApp() to give each app a unique name.","stack":"Error: The default Firebase app already exists. This means you called initializeApp() more than once without providing an app name as the second argument. In most cases you only need to call initializeApp() once. But if you do want to initialize multiple apps, pass a second argument to initializeApp() to give each app a unique name.\n    at FirebaseAppError.FirebaseError [as constructor] (/home/mohammad/projects/dorreh/market multi/node_modules/firebase-admin/lib/utils/error.js:44:28)\n    at FirebaseAppError.PrefixedFirebaseError [as constructor] (/home/mohammad/projects/dorreh/market multi/node_modules/firebase-admin/lib/utils/error.js:90:28)\n    at new FirebaseAppError (/home/mohammad/projects/dorreh/market multi/node_modules/firebase-admin/lib/utils/error.js:125:28)\n    at FirebaseNamespaceInternals.initializeApp (/home/mohammad/projects/dorreh/market multi/node_modules/firebase-admin/lib/firebase-namespace.js:65:23)\n    at FirebaseNamespace.initializeApp (/home/mohammad/projects/dorreh/market multi/node_modules/firebase-admin/lib/firebase-namespace.js:371:30)\n    at pushNotification (/home/mohammad/projects/dorreh/market multi/controllers/user.js:318:11)\n    at newFn (/home/mohammad/projects/dorreh/market multi/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/home/mohammad/projects/dorreh/market multi/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mohammad/projects/dorreh/market multi/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/home/mohammad/projects/dorreh/market multi/node_modules/express/lib/router/route.js:112:3)\n    at newFn (/home/mohammad/projects/dorreh/market multi/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/home/mohammad/projects/dorreh/market multi/node_modules/express/lib/router/layer.js:95:5)\n    at /home/mohammad/projects/dorreh/market multi/node_modules/express/lib/router/index.js:281:22\n    at Function.process_params (/home/mohammad/projects/dorreh/market multi/node_modules/express/lib/router/index.js:335:12)\n    at next (/home/mohammad/projects/dorreh/market multi/node_modules/express/lib/router/index.js:275:10)\n    at Function.handle (/home/mohammad/projects/dorreh/market multi/node_modules/express/lib/router/index.js:174:3)"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017","level":"error"}
+{"level":"error","message":"Operation `favorites.findOne()` buffering timed out after 10000ms Operation `favorites.findOne()` buffering timed out after 10000ms","stack":"MongooseError: Operation `favorites.findOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mohammad/projects/dorreh/market multi/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:185:20)\n    at listOnTimeout (internal/timers.js:554:17)\n    at processTimers (internal/timers.js:497:7)"}
+{"level":"error","message":"Operation `orders.insertOne()` buffering timed out after 10000ms Operation `orders.insertOne()` buffering timed out after 10000ms","stack":"MongooseError: Operation `orders.insertOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mohammad/projects/dorreh/market multi/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:185:20)\n    at listOnTimeout (internal/timers.js:554:17)\n    at processTimers (internal/timers.js:497:7)"}
+{"level":"error","message":"Operation `orders.findOne()` buffering timed out after 10000ms Operation `orders.findOne()` buffering timed out after 10000ms","stack":"MongooseError: Operation `orders.findOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mohammad/projects/dorreh/market multi/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:185:20)\n    at listOnTimeout (internal/timers.js:554:17)\n    at processTimers (internal/timers.js:497:7)"}

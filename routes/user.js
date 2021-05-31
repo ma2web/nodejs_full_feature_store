@@ -11,6 +11,7 @@ const {
   upload,
   sendCode,
   verifyCode,
+  pushNotification,
 } = require("../controllers/user");
 const auth = require("../middlwares/auth");
 const admin = require("../middlwares/admin");
@@ -24,6 +25,7 @@ router.put("/api/user/:id", auth, update);
 router.post("/api/user/upload/:id", upload);
 router.post("/api/user/otp", sendCode);
 router.post("/api/user/verify", verifyCode);
+router.post("/api/user/push", pushNotification);
 router.get("/api/stores", getAllStores);
 
 module.exports = router;

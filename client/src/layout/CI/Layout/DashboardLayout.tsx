@@ -35,7 +35,9 @@ export const DashboardLayout: FC = ({ children }) => {
         },
       })
       .then((res) => {
-        if (res?.status === 200) setUser(true);
+        if (res?.status === 200) {
+          setUser(true);
+        }
       })
       .catch((err) => push("/signIn"));
   }, [api]);
@@ -45,24 +47,6 @@ export const DashboardLayout: FC = ({ children }) => {
     setOpenNotifications(false);
     setOpenFavorites(false);
     setOpenDesk((prev) => !prev);
-  });
-  useHotkeys("shift + m", () => {
-    setOpenSystemMenu((prev) => !prev);
-    setOpenNotifications(false);
-    setOpenFavorites(false);
-    setOpenDesk(false);
-  });
-  useHotkeys("shift + n", () => {
-    setOpenNotifications((prev) => !prev);
-    setOpenSystemMenu(false);
-    setOpenFavorites(false);
-    setOpenDesk(false);
-  });
-  useHotkeys("shift + f", () => {
-    setOpenFavorites((prev) => !prev);
-    setOpenSystemMenu(false);
-    setOpenNotifications(false);
-    setOpenDesk(false);
   });
 
   return (

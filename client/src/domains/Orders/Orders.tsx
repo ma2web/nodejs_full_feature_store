@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useOrdersStyles from "./useOrdersStyles";
 import OrdersMessages from "./Orders.message";
 import { useIntl } from "react-intl";
@@ -8,6 +8,7 @@ import Table from "components/Table";
 import GolModal from "components/GolModal/GolModal";
 import GolButton from "components/GolButton/GolButton";
 import ChangeStatus from "./components/ChangeStatus";
+import { socket } from "utils/socket";
 
 const Header = () => (
   <tr>
@@ -33,11 +34,11 @@ const Row = ({ data, setOrder }) => (
 
 const Orders = () => {
   const { formatMessage } = useIntl();
-
   const [orders, setOrders] = useState([]);
   const [order, setOrder] = useState(null);
   const [changeStatus, setChangeStatus] = useState(false);
   const classes = useOrdersStyles({ changeStatus });
+  console.log(socket);
 
   useEffect(() => {
     axios
@@ -46,9 +47,13 @@ const Orders = () => {
           "x-auth-token": localStorage.token,
         },
       })
-      .then((res) => setOrders(res?.data))
+      .then((res) => {
+        setOrders(res?.data);
+      })
       .catch((err) => console.log(err));
   }, []);
+
+  console.log(socket);
   return (
     <div>
       <h1>{formatMessage(OrdersMessages.orders)}</h1>

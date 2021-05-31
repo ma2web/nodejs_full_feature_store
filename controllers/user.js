@@ -307,9 +307,11 @@ module.exports = {
       });
   },
   verifyCode: async (req, res) => {
-    let { otp } = req.body;
-    let phoneNumber = req.body.phoneNumber;
+    const { otp } = req.body;
     if (!otp) return res.status(400).send("missed otp value");
+    const phoneNumber = req.body.phoneNumber;
+    const user = await User.findOne({ phoneNumber });
+    const token = user.generateAuthToken();
 
     let secret = myCache.get(phoneNumber);
 
@@ -317,6 +319,8 @@ module.exports = {
 
     res.send({
       message: "success",
+      user,
+      token,
     });
   },
   pushNotification: async (req, res) => {

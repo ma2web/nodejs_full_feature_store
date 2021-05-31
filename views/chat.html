@@ -66,7 +66,7 @@
       var socket = io({
         auth: {
           token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGE2MzJhNzI5YjRlMDJlZGEyODQ0OTgiLCJmaXJzdE5hbWUiOiJhIiwibGFzdE5hbWUiOiJhIiwiZW1haWwiOiJhc2RAYXNkLmNvbSIsImNvdW50cnlDb2RlIjoxMSwicGhvbmVOdW1iZXIiOjEyMzQ1Njc4OTAsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYyMTUxMzMxN30.rIPOqbxgG15GexazKrW3kq5lL8aS8QqCa91b7Ded5h0",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGE4ZGYyOWU4M2M3YjgyODQ1ZTNmZTUiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMDIyMjAxNTQsImFkZHJlc3MiOiJ4eHh4eHh4eHh4eHh4eHgiLCJyb2xlIjoiYWRtaW4iLCJzb2NrZXRJZCI6Ik5wclFKeTlONXNGT0VTZWRBQUFEIiwic3RvcmUiOnt9LCJpYXQiOjE2MjI0NDQxMTB9.7o3PeLf3JgMVE8rMTJ90vGVWtQPV52ujmqlf60ZTxvs",
         },
         reconnection: false,
       });
@@ -78,12 +78,17 @@
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (input.value) {
-          socket.emit("chat message", input.value);
+          let data = {
+            toUser: "2",
+            fromUser: "3",
+            text: input.value,
+          };
+          socket.emit("sendMessage", data);
           input.value = "";
         }
       });
 
-      socket.on("chat message", function (msg) {
+      socket.on("sendMessage", function (msg) {
         var item = document.createElement("li");
         item.textContent = msg;
         messages.appendChild(item);

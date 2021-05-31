@@ -25,6 +25,7 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
+const { uuidv4 } = require("uuid");
 const io = new Server(server, {
   pingInterval: 10000,
   pingTimeout: 5000,
@@ -99,16 +100,20 @@ server.listen(port, (err) => {
         next(err);
       } else {
         let User = require("./models/user");
+
         await User.updateOne(
           {
             _id: user._id,
           },
           {
             $set: { socketId: socket.id },
+          },
+          (err, data) => {
+            if (err) console.log(err);
+            socket.user = user;
+            console.log(`${user.email} connected to socket`);
           }
-        )
-          .then(() => console.log(`${user.email} connected to socket`))
-          .catch((err) => console.log(`Error: ${err.message}`));
+        );
 
         socket.on("disconnect", () => {
           console.log("user disconnected");
@@ -118,29 +123,23 @@ server.listen(port, (err) => {
     });
 
     socket.on("join", function (data) {
-      let { conversationId, fromUser, toUser, text } = data;
       socket.join(socketId);
     });
 
-    socket.on("send message", function (data) {
-      console.log("sending room post", data.room);
-      socket.broadcast.to(data.room).emit("conversation private post", {
-        message: data.message,
-      });
-    });
-
     socket.on("sendMessage", async (data) => {
-      let { fromUser, toUser, text } = data;
-      io.emit("receiveMessage", {});
+      let { fromUser, toUser, text, conversationId } = data;
 
-      let Convarsation = require("./models/conversation");
-
-      let newConversation = new Convarsation({
+      let Chat = require("./models/chat");
+      conversationId = conversationId ? conversationId : uuidv4();
+      let newChat = new Chat({
+        conversationId,
         fromUser,
         toUser,
         text,
       });
-      await newConversation.save();
+      newChat = await newChat.save();
+
+      console.log(newChat);
     });
   });
 });

@@ -3,12 +3,17 @@ const { s, rs, rref, ref } = require("../utils/mongo");
 
 var schema = new mongoose.Schema(
   {
-    fromUser: ref("user"),
-    toUser: ref("user"),
-    text: rs,
-    conversationId: rs,
+    order: { ...rs, unique: true },
+    messages: [
+      {
+        fromUser: ref("user"),
+        toUser: ref("user"),
+        body: rs,
+        type: { ...rs, enum: ["text", "order", "point"] },
+      },
+    ],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("conversation", schema);
+module.exports = mongoose.model("chat", schema);

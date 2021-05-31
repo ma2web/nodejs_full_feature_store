@@ -11,15 +11,19 @@ require("express-async-errors");
 const config = require("config");
 // middlewares
 const ErrorMiddleware = require("./middlwares/error");
-// routes
+
 const User = require("./models/user");
+// routes
 const s = require("./controllers/socket");
 const UserRoutes = require("./routes/user");
 const ProductRoutes = require("./routes/product");
 const CategoryRoutes = require("./routes/category");
 const OrderRoutes = require("./routes/order");
 const CardRoutes = require("./routes/card");
+const Chat = require("./models/chat");
 const FavoriteRoutes = require("./routes/favorite");
+const ChatRoutes = require("./routes/chat");
+
 // init app
 const app = express();
 const http = require("http");
@@ -50,6 +54,7 @@ app.use(OrderRoutes);
 app.use(CardRoutes);
 app.use(CardRoutes);
 app.use(FavoriteRoutes);
+app.use(ChatRoutes);
 
 // error middleware
 app.use(ErrorMiddleware);
@@ -75,12 +80,16 @@ app.get("/*", function (req, res) {
 });
 
 // connect to db
-mongoose.connect(config.get("mongoURI"), {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  config.get("mongoURI"),
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+    useUnifiedTopology: true,
+  },
+  () => console.log("DB Conected")
+);
 
 const port = 8989;
 
@@ -122,24 +131,39 @@ server.listen(port, (err) => {
       next();
     });
 
-    socket.on("join", function (data) {
-      socket.join(socketId);
-    });
-
     socket.on("sendMessage", async (data) => {
-      let { fromUser, toUser, text, conversationId } = data;
+      let { fromUser, toUser, body, order, type } = data;
 
-      let Chat = require("./models/chat");
-      conversationId = conversationId ? conversationId : uuidv4();
-      let newChat = new Chat({
-        conversationId,
+      socket.join(data.order);
+      let findChat = await Chat.findOne({ order });
+
+      let message = {
         fromUser,
         toUser,
-        text,
-      });
-      newChat = await newChat.save();
+        body,
+        type,
+      };
+      if (!findChat) {
+        console.log("not found");
 
-      console.log(newChat);
+        let newChat = new Chat({
+          order,
+          messages: [message],
+        });
+        await newChat.save();
+        console.log("chat created");
+      } else {
+        console.log("found");
+        let messages = [...findChat.messages, message];
+        await Chat.updateOne(
+          { order },
+          {
+            messages,
+          },
+          () => console.log("chat updated")
+        );
+      }
+      await findChat.save();
     });
   });
 });

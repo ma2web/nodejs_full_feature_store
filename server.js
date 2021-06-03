@@ -143,7 +143,7 @@ server.listen(port, (err) => {
       let findChat = await Chat.findOne({ order });
 
       let or = await Order.findById(order);
-      socket.emit("newConversation", or);
+      io.emit("newConversation", or);
 
       let message = {
         fromUser,

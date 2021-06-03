@@ -46,7 +46,7 @@ const Messanger = ({ openChat, setOpenChat }) => {
 
   useEffect(() => {
     socket.on("receiveMessage", (data) => {
-      setMessages([...messages, data]);
+      setMessages((prev) => [...prev, data]);
     });
   }, [socket]);
 

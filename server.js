@@ -145,25 +145,23 @@ server.listen(port, (err) => {
         type,
       };
       if (!findChat) {
-        console.log("not found");
+        console.log("not found", socketId);
 
         let newChat = new Chat({
           order,
           messages: [message],
         });
         await newChat.save();
-        io.to(socketId).emit("receiveMessage", message);
-
-        console.log("chat created");
+        socket.to(socketId).emit("receiveMessage", message);
       } else {
-        console.log("found");
+        console.log("found", socketId);
         let messages = [...findChat.messages, message];
         await Chat.updateOne(
           { order },
           {
             messages,
           },
-          () => io.to(socketId).emit("receiveMessage", message)
+          () => socket.to(socketId).emit("receiveMessage", message)
         );
       }
       await findChat.save();

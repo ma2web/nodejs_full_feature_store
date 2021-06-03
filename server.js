@@ -21,6 +21,7 @@ const CategoryRoutes = require("./routes/category");
 const OrderRoutes = require("./routes/order");
 const CardRoutes = require("./routes/card");
 const Chat = require("./models/chat");
+const Order = require("./models/order");
 const FavoriteRoutes = require("./routes/favorite");
 const ChatRoutes = require("./routes/chat");
 
@@ -155,6 +156,9 @@ server.listen(port, (err) => {
         });
         await newChat.save();
         socket.to(order).emit("receiveMessage", message);
+        let newList = await Order.findOne({ _id: order });
+
+        socket.emit("newConversation", newList);
       } else {
         let messages = [...findChat.messages, message];
         await Chat.updateOne(

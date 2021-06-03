@@ -49,6 +49,10 @@ const Messanger = ({ openChat, setOpenChat }) => {
     socket.on("receiveMessage", (data) => {
       setMessages((prev) => [...prev, data]);
     });
+
+    socket.on("newConversation", (data) => {
+      console.log(data);
+    });
   }, [socket]);
 
   return (

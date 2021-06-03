@@ -166,7 +166,12 @@ server.listen(port, (err) => {
           {
             messages,
           },
-          () => socket.to(order).emit("receiveMessage", message)
+          () => {
+            socket.to(order).emit("receiveMessage", message);
+            let newList = await Order.findOne({ _id: order });
+
+            socket.emit("newConversation", newList);
+          }
         );
       }
       await findChat.save();

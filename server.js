@@ -166,7 +166,7 @@ server.listen(port, (err) => {
           {
             messages,
           },
-          () => {
+          async () => {
             socket.to(order).emit("receiveMessage", message);
             let newList = await Order.findOne({ _id: order });
 

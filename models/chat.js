@@ -3,7 +3,7 @@ const { s, rs, rref, ref } = require("../utils/mongo");
 
 var schema = new mongoose.Schema(
   {
-    order: { ...rs, unique: true },
+    order: rref("order"),
     messages: [
       {
         fromUser: ref("user"),

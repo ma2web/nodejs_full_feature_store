@@ -39,7 +39,7 @@ const Messanger = ({ openChat, setOpenChat }) => {
             "x-auth-token": localStorage?.token,
           },
         })
-        .then((res) => setMessages(res?.data))
+        .then((res) => console.log(res?.data))
         .catch((err) => console.log(err));
     }
   }, [selectedContact]);

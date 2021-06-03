@@ -66,7 +66,7 @@
       var socket = io({
         auth: {
           token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGE4ZGYyOWU4M2M3YjgyODQ1ZTNmZTUiLCJmaXJzdE5hbWUiOiJtb2hhbW1hZCBhbWluIiwibGFzdE5hbWUiOiJhemltaSIsImVtYWlsIjoibUBhLmNvbSIsImNvdW50cnlDb2RlIjo5OCwicGhvbmVOdW1iZXIiOjkxMDIyMjAxNTQsImFkZHJlc3MiOiJ4eHh4eHh4eHh4eHh4eHgiLCJyb2xlIjoiYWRtaW4iLCJzb2NrZXRJZCI6InBIcHh2TGxvYXpEYWQyTl9BQUFEIiwic3RvcmUiOnt9LCJpYXQiOjE2MjI0Nzk0MzN9.IAdKE8xBTGyvexMsW2if588qiHmuIigBlWP8MdpVXS4",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI4ZDEyZTFjNGQ3ZTU5MzRiNDI3MzMiLCJlbWFpbCI6ImFAay5jb20iLCJwaG9uZU51bWJlciI6OTM4NDgwNDA3OCwicm9sZSI6InVzZXIiLCJzdG9yZSI6e30sImlhdCI6MTYyMjcyNDkxMH0.sEdMuoNou7v8Ct9ygJuwjTKG15N8gmEpgOKXx6fs-DY",
         },
         reconnection: false,
       });
@@ -79,10 +79,10 @@
         e.preventDefault();
         if (input.value) {
           let data = {
-            toUser: "60a632a729b4e02eda284498",
-            fromUser: "60acf30ba982ab58a128a9ce",
+            toUser: "60b209d54810f41b8cde363e",
+            fromUser: "60b8d12e1c4d7e5934b42733",
             body: input.value, // if type is text send simple string text in body, if type is order send order id in body, if type is point send lat&lng like 52.31&32.56 in body
-            order: "60b0be64b8e872751b420c1c",
+            order: "60b8d2351c4d7e5934b4273a",
             type: "text", // text, order, point
           };
           socket.emit("sendMessage", data);

@@ -233,7 +233,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"api\", function() { return api; });\nconst api = \"http://localhost:8989\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZG9tYWlucy9hcGkuanM/Njg1YiJdLCJuYW1lcyI6WyJhcGkiXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7QUFBTyxNQUFNQSxHQUFHLEdBQUcsdUJBQVoiLCJmaWxlIjoiLi9zcmMvZG9tYWlucy9hcGkuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgYXBpID0gXCJodHRwOi8vbG9jYWxob3N0Ojg5ODlcIjtcbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/domains/api.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"api\", function() { return api; });\n// export const api = \"http://localhost:8989\";\nconst api = \"http://185.247.119.178:8989\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZG9tYWlucy9hcGkuanM/Njg1YiJdLCJuYW1lcyI6WyJhcGkiXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7QUFBQTtBQUNPLE1BQU1BLEdBQUcsR0FBRyw2QkFBWiIsImZpbGUiOiIuL3NyYy9kb21haW5zL2FwaS5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIGV4cG9ydCBjb25zdCBhcGkgPSBcImh0dHA6Ly9sb2NhbGhvc3Q6ODk4OVwiO1xuZXhwb3J0IGNvbnN0IGFwaSA9IFwiaHR0cDovLzE4NS4yNDcuMTE5LjE3ODo4OTg5XCI7XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/domains/api.js\n");
 
 /***/ }),
 

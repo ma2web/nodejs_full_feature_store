@@ -13,6 +13,7 @@ import { useDashboardStyle } from "./useDashboardStyle";
 import DashboardMessages from "./Dashboard.message";
 import { useIntl } from "react-intl";
 import axios from "axios";
+import Messanger from "./components/chat";
 import { api } from "domains/api";
 
 export const DashboardLayout: FC = ({ children }) => {
@@ -20,6 +21,8 @@ export const DashboardLayout: FC = ({ children }) => {
   const [openSystemMenu, setOpenSystemMenu] = useState(false);
   const [openNotifications, setOpenNotifications] = useState(false);
   const [openFavorites, setOpenFavorites] = useState(false);
+  const [openChat, setOpenChat] = useState(false);
+
   const [user, setUser] = useState(false);
   const [openDesk, setOpenDesk] = useState(true);
   const theme = useTheme();
@@ -128,7 +131,11 @@ export const DashboardLayout: FC = ({ children }) => {
                     }
               }
             >
-              <div>{children}</div>
+              <div>
+                {children}
+
+                <Messanger {...{ setOpenChat, openChat }} />
+              </div>
             </div>
           </div>
         </>

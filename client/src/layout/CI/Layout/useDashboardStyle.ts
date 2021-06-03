@@ -67,7 +67,7 @@ export const useDashboardStyle = makeGolStyles(
       paddingBottom: spacing(12),
       color: palette.neutral[600],
       height: "100vh",
-      overflow: "auto",
+      overflow: "hidden",
     },
     "@keyframes opacity1": {
       from: { opacity: 0, transform: "translateY(-10px)" },

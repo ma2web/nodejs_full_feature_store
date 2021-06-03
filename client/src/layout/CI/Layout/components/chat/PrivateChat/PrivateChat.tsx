@@ -95,6 +95,7 @@ const PrivateChat = ({
               <div className={styles.message}>
                 <div
                   className={
+                    item?.fromUser?._id === localStorage?.userId ||
                     item?.fromUser === localStorage?.userId
                       ? styles.spaceBetweenMe
                       : styles.spaceBetween
@@ -105,7 +106,16 @@ const PrivateChat = ({
                     {new Date(item?.dateTime).toLocaleTimeString()}
                   </div>
                 </div>
-                <div className={styles.bottomMe}>{item?.body}</div>
+                <div
+                  className={
+                    item?.fromUser?._id === localStorage?.userId ||
+                    item?.fromUser === localStorage?.userId
+                      ? styles.bottomMe
+                      : styles.bottom
+                  }
+                >
+                  {item?.body}
+                </div>
               </div>
             ))}
           </div>

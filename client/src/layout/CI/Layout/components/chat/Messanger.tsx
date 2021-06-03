@@ -44,6 +44,12 @@ const Messanger = ({ openChat, setOpenChat }) => {
     }
   }, [selectedContact]);
 
+  useEffect(() => {
+    socket.on("receiveMessage", (data) => {
+      console.log(data);
+    });
+  }, [socket]);
+
   return (
     <div>
       {privateMessage && (

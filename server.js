@@ -133,10 +133,11 @@ server.listen(port, (err) => {
 
     socket.on("sendMessage", async (data) => {
       let { fromUser, toUser, body, order, type } = data;
-
       socket.join(data.order);
-      let findChat = await Chat.findOne({ order });
 
+      let findChat = await Chat.findOne({ order });
+      const targetUser = User.findById(toUser);
+      let { socketId } = targetUser;
       let message = {
         fromUser,
         toUser,
@@ -151,6 +152,8 @@ server.listen(port, (err) => {
           messages: [message],
         });
         await newChat.save();
+        io.to(socketId).emit("receiveMessage", message);
+
         console.log("chat created");
       } else {
         console.log("found");
@@ -160,7 +163,7 @@ server.listen(port, (err) => {
           {
             messages,
           },
-          () => console.log("chat updated")
+          () => io.to(socketId).emit("receiveMessage", message)
         );
       }
       await findChat.save();

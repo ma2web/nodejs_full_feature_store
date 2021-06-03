@@ -31,9 +31,13 @@ const PrivateChat = ({
     e.preventDefault();
     const chatMessage = {
       fromUser: localStorage?.userId,
-      toUser: "",
+      toUser: selectedContact?.customer?._id,
       body: message,
+      order: orderId,
+      type: "text",
     };
+
+    socket.emit("sendMessage", chatMessage);
 
     setMessages((prev) => [...prev, { ...chatMessage, dateTime: new Date() }]);
 

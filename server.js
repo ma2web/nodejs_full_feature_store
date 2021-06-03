@@ -143,6 +143,7 @@ server.listen(port, (err) => {
         toUser,
         body,
         type,
+        order,
       };
       if (!findChat) {
         let newChat = new Chat({

@@ -142,6 +142,9 @@ server.listen(port, (err) => {
 
       let findChat = await Chat.findOne({ order });
 
+      let or = await Order.findById(order);
+      socket.emit("newConversation", or);
+
       let message = {
         fromUser,
         toUser,
@@ -149,6 +152,7 @@ server.listen(port, (err) => {
         type,
         order,
       };
+
       if (!findChat) {
         let newChat = new Chat({
           order,
@@ -156,9 +160,6 @@ server.listen(port, (err) => {
         });
         await newChat.save();
         socket.to(order).emit("receiveMessage", message);
-        let newList = await Order.findOne({ _id: order });
-
-        socket.emit("newConversation", newList);
       } else {
         let messages = [...findChat.messages, message];
         await Chat.updateOne(
@@ -168,9 +169,6 @@ server.listen(port, (err) => {
           },
           async () => {
             socket.to(order).emit("receiveMessage", message);
-            let newList = await Order.findOne({ _id: order });
-
-            socket.emit("newConversation", newList);
           }
         );
       }

@@ -84,7 +84,6 @@
             body: input.value, // if type is text send simple string text in body, if type is order send order id in body, if type is point send lat&lng like 52.31&32.56 in body
             order: "60b8d2351c4d7e5934b4273a",
             type: "text", // text, order, point,
-            dateTime: new Date(),
           };
           socket.emit("sendMessage", data);
           input.value = "";

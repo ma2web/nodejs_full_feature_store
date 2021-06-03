@@ -10,6 +10,10 @@ var schema = new mongoose.Schema(
         toUser: ref("user"),
         body: rs,
         type: { ...rs, enum: ["text", "order", "point"] },
+        dateTime: {
+          type: Date,
+          default: Date.now,
+        },
       },
     ],
   },

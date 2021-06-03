@@ -46,16 +46,7 @@ const Messanger = ({ openChat, setOpenChat }) => {
 
   useEffect(() => {
     socket.on("receiveMessage", (data) => {
-      if (data?.fromUser) {
-        axios
-          .get(`${api}/api/messages/${selectedContact?._id}`, {
-            headers: {
-              "x-auth-token": localStorage?.token,
-            },
-          })
-          .then((res) => setMessages(res?.data?.messages))
-          .catch((err) => console.log(err));
-      }
+      setMessages([...messages, data]);
     });
   }, [socket]);
 

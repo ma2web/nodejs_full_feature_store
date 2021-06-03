@@ -12,4 +12,11 @@ module.exports = {
     if (!chatlist) return res.status(400).send("order id is wrong");
     res.send(chatlist);
   },
+  getAllChats: async (req, res) => {
+    let chatlist = await Chat.findOne()
+      .populate("messages.fromUser")
+      .populate("messages.toUser");
+
+    res.send(chatlist);
+  },
 };

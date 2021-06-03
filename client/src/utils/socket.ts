@@ -7,7 +7,7 @@ socket = socketIOClient(`${api}`, {
   auth: {
     token: typeof window !== "undefined" && localStorage.token,
   },
-  reconnection: false,
+  reconnection: true,
 });
 
 export { socket };

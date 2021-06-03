@@ -131,13 +131,16 @@ server.listen(port, (err) => {
       next();
     });
 
+    socket.on("join", (data) => {
+      let { order } = data;
+      socket.join(order);
+    });
+
     socket.on("sendMessage", async (data) => {
       let { fromUser, toUser, body, order, type } = data;
-      socket.join(order);
 
       let findChat = await Chat.findOne({ order });
-      const targetUser = User.findById(toUser);
-      let { socketId } = targetUser;
+
       let message = {
         fromUser,
         toUser,

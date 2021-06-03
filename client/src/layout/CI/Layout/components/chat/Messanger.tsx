@@ -33,6 +33,7 @@ const Messanger = ({ openChat, setOpenChat }) => {
 
   useEffect(() => {
     if (selectedContact?._id) {
+      socket.emit("join", { order: selectedContact?._id });
       axios
         .get(`${api}/api/messages/${selectedContact?._id}`, {
           headers: {

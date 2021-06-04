@@ -1,0 +1,1 @@
+{"ast":null,"code":"import socketIOClient from \"socket.io-client\";\nimport { api } from \"../domains/api\";\nlet socket;\nsocket = socketIOClient(`${api}`, {\n  auth: {\n    token: false && localStorage.token\n  },\n  reconnection: true\n});\nexport { socket };","map":null,"metadata":{},"sourceType":"module"}

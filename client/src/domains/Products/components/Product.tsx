@@ -3,12 +3,13 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { api } from "domains/api";
 import EditProduct from "./EditProduct";
+import useProductsStyles from "../useProductsStyles";
 import { Button } from "@material-ui/core";
 
 const Product = () => {
   const { query } = useRouter();
   let { id } = query;
-
+  const classes = useProductsStyles();
   const [product, setProduct] = React.useState(null);
   const [edit, setEdit] = React.useState(false);
 
@@ -24,7 +25,7 @@ const Product = () => {
       .catch((err) => console.log(err));
   }, [id]);
   return (
-    <div>
+    <div className={classes.product}>
       <div>
         {!edit ? (
           <>
@@ -33,26 +34,26 @@ const Product = () => {
               onClick={() => setEdit((prev) => !prev)}
               variant="outlined"
             >
-              Edit Product
+              ویرایش محصول
             </Button>
             <br />
             <br />
             <h1>{product?.name}</h1>
             <br />
             <div>
-              <h3>Price:</h3>
+              <h3>قیمت</h3>
               <ul>
                 <li>{product?.price}</li>
               </ul>
             </div>
             <div>
-              <h3>New Price:</h3>
+              <h3>قیمت با تخفیف</h3>
               <ul>
                 <li>{product?.discount}</li>
               </ul>
             </div>
             <div>
-              <h3>Images:</h3>
+              <h3>عکس های محصول</h3>
               <ul>
                 {product?.images?.length
                   ? product?.images?.map((el) => (
@@ -69,7 +70,7 @@ const Product = () => {
               </ul>
             </div>
             <div>
-              <h3>Categories:</h3>
+              <h3>دسته بندی</h3>
               <ul>
                 {product?.categories?.map((el) => (
                   <li>{el?.name}</li>
@@ -77,13 +78,13 @@ const Product = () => {
               </ul>
             </div>
             <div>
-              <h3>In Stock:</h3>
+              <h3>تعداد موجود در انبار</h3>
               <ul>
                 <li>{product?.stock}</li>
               </ul>
             </div>
             <div>
-              <h3>Sizes:</h3>
+              <h3>سایزهای موجود</h3>
               <ul>
                 {product?.sizes?.length
                   ? product?.sizes?.map((el) => (
@@ -95,19 +96,21 @@ const Product = () => {
               </ul>
             </div>
             <div>
-              <h3>Reviews:</h3>
+              <h3>تعداد دیدگاه ها</h3>
               <ul>
-                {product?.comments?.length
-                  ? product?.comments?.map((el) => el?.size)
-                  : "No Comments Added"}
+                <li>
+                  {product?.comments?.length
+                    ? product?.comments?.map((el) => el?.size)
+                    : "بدون دیدگاه"}
+                </li>
               </ul>
             </div>
             <div>
-              <h3>Created At:</h3>
+              <h3>تاریخ بارگزاری</h3>
               <ul>{new Date(product?.createdAt).toLocaleString()}</ul>
             </div>
             <div>
-              <h3>Last Update:</h3>
+              <h3>تاریخ آخرین بروزرسانی</h3>
               <ul>{new Date(product?.updatedAt).toLocaleString()}</ul>
             </div>
           </>

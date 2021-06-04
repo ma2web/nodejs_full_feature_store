@@ -36,7 +36,6 @@ export const usePrivateChatStyle = makeGolStyles(
       backgroundColor: palette.surface.default,
       height: 391,
     },
-    messages: {},
     message: {
       position: "relative",
       animationDelay: "1.5s",

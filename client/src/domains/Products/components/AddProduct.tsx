@@ -45,7 +45,7 @@ const AddProduct = () => {
     <div className={classes.parent}>
       <div className={classes.child}>
         <div>
-          <h3>Name</h3>
+          <h3>نام محصول</h3>
         </div>
         <div>
           <TextField
@@ -58,7 +58,7 @@ const AddProduct = () => {
       </div>
       <div className={classes.child}>
         <div>
-          <h3>Description</h3>
+          <h3>توضیحات مختصر</h3>
         </div>
         <div>
           <TextField
@@ -73,7 +73,7 @@ const AddProduct = () => {
       </div>
       <div className={classes.child}>
         <div>
-          <h3>Price</h3>
+          <h3>قیمت</h3>
         </div>
         <div>
           <TextField
@@ -88,7 +88,7 @@ const AddProduct = () => {
       </div>
       <div className={classes.child}>
         <div>
-          <h3>New Price</h3>
+          <h3>قیمت با تخفیف</h3>
         </div>
         <div>
           <TextField
@@ -103,7 +103,7 @@ const AddProduct = () => {
       </div>
       <div className={classes.child}>
         <div>
-          <h3>Product Images</h3>
+          <h3>افزودن عکس</h3>
         </div>
         <div>
           <ul>
@@ -118,7 +118,7 @@ const AddProduct = () => {
                     />
                   </li>
                 ))
-              : "No Photos Added"}
+              : null}
           </ul>
         </div>
         <div>
@@ -139,7 +139,7 @@ const AddProduct = () => {
       </div>
       <div className={classes.child}>
         <div>
-          <h3>Categories</h3>
+          <h3>انتخاب دسته بندی</h3>
         </div>
         <div>
           <ul>
@@ -179,14 +179,14 @@ const AddProduct = () => {
                 })
               }
             >
-              Add
+              افزودن
             </Button>
           </div>
         </div>
       </div>
       <div className={classes.child}>
         <div>
-          <h3>In Stock:</h3>
+          <h3>تعداد موجودی در انبار</h3>
         </div>
         <div>
           <TextField
@@ -201,7 +201,7 @@ const AddProduct = () => {
       </div>
       <div className={classes.child}>
         <div>
-          <h3>Sizes:</h3>
+          <h3>افزودن سایز</h3>
         </div>
         <div>
           <ul>
@@ -248,12 +248,12 @@ const AddProduct = () => {
                 });
               }}
             >
-              Add
+              افزودن
             </Button>
           </div>
         </div>
       </div>
-      <div className={classes.child}>
+      <div>
         <Button
           fullWidth
           color="primary"
@@ -296,7 +296,7 @@ const AddProduct = () => {
           }}
           size="large"
         >
-          Create Product
+          افزودن محصول
         </Button>
       </div>
     </div>

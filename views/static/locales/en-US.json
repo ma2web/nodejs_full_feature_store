@@ -1,0 +1,67 @@
+{
+  "panel.dashboard.menu.dashboard": "Dashboard",
+  "panel.dashboard.search": "Search",
+  "panel.dashboard.dragAndDrop": "DRAG AND DROP A PAGE HERE",
+  "panel.dashboard.seeMoreNotif": "See All Notifications",
+  "panel.dashboard.users": "Users",
+  "panel.dashboard.settings": "Settings",
+  "panel.dashboard.themeCustomize": "Theme Customize",
+  "panel.dashboard.skin": "Skin",
+  "panel.dashboard.light": "LIGHT",
+  "panel.dashboard.dark": "DARK",
+  "panel.dashboard.semiDark": "SEMIDARK",
+  "panel.dashboard.fontSelector": "Font Selector",
+  "panel.dashboard.langSelector": "Language Selector",
+  "panel.dashboard.currencyType": "Currency Type",
+  "panel.dashboard.sayHello": "Hey,",
+  "panel.dashboard.administrator": "administrator",
+  
+  "panel.messanger.messaging": "Messaging",
+
+  "panel.auth.SingInPage.subTitle": "Let the World change",
+  "panel.auth.SingInPage.title": "Welcome Back",
+  "panel.auth.SingInPage.email": "EMAIL",
+  "panel.auth.SingInPage.phone": "PHONE",
+  "panel.auth.SingInPage.emailInput": "Your Email Address",
+  "panel.auth.SingInPage.phoneInput": "Your Phone Numbe",
+  "panel.auth.SingInPage.passInput": "Password",
+  "panel.auth.SingInPage.forgetPassLink": "Forget Password?",
+  "panel.auth.SingInPage.notHaveAccount": "I Don’t Have Account.",
+  "panel.auth.SingInPage.signUp": " Sign Up",
+  "panel.auth.SingInPage.signIn": "SIGN IN",
+  "panel.auth.SingInPage.signInWithGoogle": "LOGIN WITH GOOGLE",
+  "panel.auth.SingInPage.signInMessage1": "Hurry up! they need you",
+  "panel.auth.EnterPassword.title": "Recover your password",
+  "panel.auth.EnterPassword.desc": "Enter Your Password",
+  "panel.auth.EnterPassword.email": "Email",
+  "panel.auth.EnterPassword.forgetPassword": "NEXT",
+  "panel.auth.OtpPage.title": "OTP",
+  "panel.auth.OtpPage.desc": "Please enter 5 digit code sent to your registerd email",
+  "panel.auth.OtpPage.notRecieved": "Don't Recieved code?",
+  "panel.auth.OtpPage.resend": "Resend",
+  "panel.auth.OtpPage.signUp": "Sign Up",
+
+  "panel.auth.SignUpPageM.signInMessage1": "Hurry up! they need you",
+
+  "panel.auth.SignUpPageM.allready": "Already Have Account?",
+  "panel.auth.SignUpPageM.signIn": "Sign In",
+  "panel.auth.SignUpPageM.signUp": "Sign Up",
+  "panel.auth.SignUpPageM.title": "Sign Up",
+  "panel.auth.SignUpPageM.subTitle": "Let the World change!",
+  "panel.auth.SignUpPageM.phoneWay": "Use my phone number insted",
+  "panel.auth.SignUpPageM.emailWay": "Use my email account insted",
+  "panel.auth.SignUpPageM.phoneInput": "Phone Number",
+  "panel.auth.SignUpPageM.signInWithGoogle": "SIGN UP WITH GOOGLE",
+    
+  "panel.auth.SignUpPageM.fullNameInput": "Full Name",
+  "panel.auth.SignUpPageM.emailInput": "Email",
+
+  "panel.auth.RecoverPasswordPage.title": "Enter Your Password",
+  "panel.auth.RecoverPasswordPage.passInput": "New Password",
+  "panel.auth.RecoverPasswordPage.confirmPassInput": "Re-type New Password",
+  "panel.auth.RecoverPasswordPage.done": "Submit"
+  
+  
+  
+
+}

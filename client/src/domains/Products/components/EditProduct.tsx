@@ -1,11 +1,14 @@
+import classes from "*.module.css";
 import { Button, FormHelperText, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import axios from "axios";
 import { api } from "domains/api";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import useProductsStyles from "../useProductsStyles";
 
 const EditProduct = ({ product, setProduct }) => {
+  const classes = useProductsStyles();
   const [categories, setCategories] = useState([]);
   const [sCategories, setSCategories] = useState([]);
   const [category, setCategory] = useState("");
@@ -29,10 +32,11 @@ const EditProduct = ({ product, setProduct }) => {
   }, []);
 
   return (
-    <div>
-      <div>
+    <div className={classes.parent}>
+      {/* title */}
+      <div className={classes.child}>
         <div>
-          <h3>Name</h3>
+          <h3>عنوان محصول</h3>
         </div>
         <div>
           <TextField
@@ -44,9 +48,10 @@ const EditProduct = ({ product, setProduct }) => {
         </div>
       </div>
       <br />
-      <div>
+      {/* description */}
+      <div className={classes.child}>
         <div>
-          <h3>Description</h3>
+          <h3>توضیحات محصول</h3>
         </div>
         <div>
           <TextField
@@ -60,9 +65,10 @@ const EditProduct = ({ product, setProduct }) => {
         </div>
       </div>
       <br />
-      <div>
+      {/* price */}
+      <div className={classes.child}>
         <div>
-          <h3>Price</h3>
+          <h3>قیمت</h3>
         </div>
         <div>
           <TextField
@@ -76,9 +82,10 @@ const EditProduct = ({ product, setProduct }) => {
         </div>
       </div>
       <br />
-      <div>
+      {/* new price */}
+      <div className={classes.child}>
         <div>
-          <h3>New Price</h3>
+          <h3>قیمت با تخفیف</h3>
         </div>
         <div>
           <TextField
@@ -92,9 +99,10 @@ const EditProduct = ({ product, setProduct }) => {
         </div>
       </div>
       <br />
-      <div>
+      {/* image */}
+      <div className={classes.child}>
         <div>
-          <h3>Product Images</h3>
+          <h3>عکس های محصول</h3>
         </div>
         <div>
           <ul>
@@ -109,7 +117,7 @@ const EditProduct = ({ product, setProduct }) => {
                     />
                   </li>
                 ))
-              : "No Photos Added"}
+              : "عکسی یافت نشد"}
           </ul>
         </div>
         <div>
@@ -130,9 +138,9 @@ const EditProduct = ({ product, setProduct }) => {
       </div>
       <br />
       {/* categories */}
-      <div>
+      <div className={classes.child}>
         <div>
-          <h3>Categories</h3>
+          <h3>دسته بندی ها</h3>
         </div>
         <div>
           <ul>
@@ -172,16 +180,16 @@ const EditProduct = ({ product, setProduct }) => {
                 })
               }
             >
-              Add
+              افزودن دسته بندی
             </Button>
           </div>
         </div>
       </div>
       <br />
       {/* stock */}
-      <div>
+      <div className={classes.child}>
         <div>
-          <h3>In Stock:</h3>
+          <h3>تعداد موجود در انبار</h3>
         </div>
         <div>
           <TextField
@@ -196,9 +204,9 @@ const EditProduct = ({ product, setProduct }) => {
       </div>
       <br />
       {/* size */}
-      <div>
+      <div className={classes.child}>
         <div>
-          <h3>Sizes:</h3>
+          <h3>سایز های موجود</h3>
         </div>
         <div>
           <ul>
@@ -245,7 +253,7 @@ const EditProduct = ({ product, setProduct }) => {
                 });
               }}
             >
-              Add
+              افزودن سایز
             </Button>
           </div>
         </div>
@@ -289,7 +297,7 @@ const EditProduct = ({ product, setProduct }) => {
           }}
           size="large"
         >
-          Update Product
+          بروز رسانی محصول
         </Button>
       </div>
     </div>

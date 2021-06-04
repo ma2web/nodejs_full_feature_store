@@ -17,8 +17,10 @@ const Messanger = ({ openChat, setOpenChat }) => {
   const { formatMessage } = useIntl();
   const [privateMessage, setPrivate] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState([]);
+  const [counter, setCounter] = useState([]);
 
   useEffect(() => {
     axios
@@ -33,6 +35,8 @@ const Messanger = ({ openChat, setOpenChat }) => {
 
   useEffect(() => {
     if (selectedContact?._id) {
+      setLoading(true);
+
       socket.emit("join", { order: selectedContact?._id });
       axios
         .get(`${api}/api/messages/${selectedContact?._id}`, {
@@ -40,20 +44,33 @@ const Messanger = ({ openChat, setOpenChat }) => {
             "x-auth-token": localStorage?.token,
           },
         })
-        .then((res) => setMessages(res?.data?.messages))
+        .then((res) => {
+          setLoading(false);
+
+          setMessages(res?.data?.messages);
+        })
         .catch((err) => console.log(err));
     }
   }, [selectedContact]);
 
   useEffect(() => {
     socket.on("receiveMessage", (data) => {
-      setMessages((prev) => [...prev, data]);
+      console.log(
+        "selectedContact, data ~ selectedContact, data",
+        selectedContact?._id,
+        data?.order
+      );
+      if (selectedContact?._id == data?.order) {
+        setMessages((prev) => [...prev, data]);
+      }
+    });
+
+    socket.on("newConversation", (data) => {
+      if (selectedContact?._id !== data?.order) {
+        setCounter((prev) => [...prev, data?._id]);
+      }
     });
   }, [socket]);
-
-  socket.on("newConversation", (data) => {
-    console.log(data);
-  });
 
   return (
     <div>
@@ -65,6 +82,7 @@ const Messanger = ({ openChat, setOpenChat }) => {
             messages,
             setMessages,
             socket,
+            loading,
           }}
         />
       )}
@@ -110,7 +128,12 @@ const Messanger = ({ openChat, setOpenChat }) => {
                       onClick={() => {
                         setSelectedContact(item);
                         setPrivate(true);
+                        let newCounter = counter?.filter(
+                          (el) => el !== item?._id
+                        );
+                        setCounter(newCounter);
                       }}
+                      key={item?._id}
                     >
                       <div className={styles.flex}>
                         <div className={styles.avatar}></div>
@@ -128,6 +151,12 @@ const Messanger = ({ openChat, setOpenChat }) => {
                             {item?.customer?.email}
                           </div>
                         </div>
+                        {selectedContact?._id !== item?._id &&
+                          counter.includes(item?._id) && (
+                            <div className={styles.counter}>
+                              {counter?.filter((el) => el === item?._id).length}
+                            </div>
+                          )}
                       </div>
                       <div className={styles.date}>
                         {new Date(item?.createdAt).toLocaleDateString()}

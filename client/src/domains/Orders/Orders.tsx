@@ -12,17 +12,23 @@ import { socket } from "utils/socket";
 
 const Header = () => (
   <tr>
-    <th>Customer Name</th>
-    <th>Customer Phone</th>
-    <th>Items</th>
-    <th>Status</th>
+    <th>نام مشتری</th>
+    <th>شماره مشتری</th>
+    <th>تعداد اقلام</th>
+    <th>وضعیت سفارش</th>
   </tr>
 );
 
-const Row = ({ data, setOrder }) => (
+const Row = ({ data, setOrder, setShowDetails }) => (
   <>
     {data?.map((el) => (
-      <tr key={el?._id} onClick={() => setOrder(el)}>
+      <tr
+        key={el?._id}
+        onClick={() => {
+          setShowDetails(true);
+          setOrder(el);
+        }}
+      >
         <td>{el?.customer?.email}</td>
         <td>{el?.customer?.phoneNumber}</td>
         <td>{el?.items?.length}</td>
@@ -36,6 +42,8 @@ const Orders = () => {
   const { formatMessage } = useIntl();
   const [orders, setOrders] = useState([]);
   const [order, setOrder] = useState(null);
+  const [showDetails, setShowDetails] = useState(false);
+
   const [changeStatus, setChangeStatus] = useState(false);
   const classes = useOrdersStyles({ changeStatus });
   console.log(socket);
@@ -53,7 +61,6 @@ const Orders = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(socket);
   return (
     <div>
       <h1>{formatMessage(OrdersMessages.orders)}</h1>
@@ -62,19 +69,25 @@ const Orders = () => {
         {orders?.length ? (
           <Table
             header={<Header />}
-            row={<Row data={orders} setOrder={setOrder} />}
+            row={
+              <Row
+                data={orders}
+                setOrder={setOrder}
+                setShowDetails={setShowDetails}
+              />
+            }
           />
         ) : (
-          "No Orders"
+          "سفارشی یافت نشد"
         )}
       </div>
 
-      {order?.customer?.firstName ? (
+      {showDetails ? (
         <GolModal>
-          <h2>Order details</h2>
+          <h2>جزئیات سفارش</h2>
           <br />
           <div>
-            <h4>Status</h4>
+            <h4>وضعیت</h4>
             <div className={classes.data}>
               {changeStatus ? (
                 <ChangeStatus
@@ -87,15 +100,13 @@ const Orders = () => {
               ) : (
                 <>
                   <div>{order?.status}</div>
-                  <span onClick={() => setChangeStatus(true)}>
-                    change status
-                  </span>
+                  <span onClick={() => setChangeStatus(true)}>تغییر وضعیت</span>
                 </>
               )}
             </div>
           </div>
           <div>
-            <h4>Customer</h4>
+            <h4>اطلاعات مشتری</h4>
             <div className={classes.data}>
               <div>{order?.customer?.firstName}</div>
               <div>{order?.customer?.lastName}</div>
@@ -107,7 +118,7 @@ const Orders = () => {
             </div>
           </div>
           <div>
-            <h4>Items</h4>
+            <h4>سفارشات</h4>
             <div className={classes.data}>
               {order?.items?.map((el) => {
                 let selectedSize = el?.size;
@@ -130,9 +141,9 @@ const Orders = () => {
             <GolButton
               color="primary"
               variant="contained"
-              onClick={() => setOrder(null)}
+              onClick={() => setShowDetails(false)}
             >
-              close modal
+              بستن پنجره
             </GolButton>
           </div>
         </GolModal>

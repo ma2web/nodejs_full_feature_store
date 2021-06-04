@@ -18,9 +18,11 @@ module.exports = {
     );
     return config;
   },
-  i18n: {
-    locales: ["fa-IR", "en-US", "ar-AR"],
-    defaultLocale: "fa-IR",
-  },
+
   trailingSlash: true,
 };
+
+// i18n: {
+//   locales: ["fa-IR", "en-US", "ar-AR"],
+//   defaultLocale: "fa-IR",
+// },

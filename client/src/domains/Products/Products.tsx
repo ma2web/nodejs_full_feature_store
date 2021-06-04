@@ -12,10 +12,10 @@ import AddIcon from "@material-ui/icons/Add";
 
 const Header = () => (
   <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Categories</th>
-    <th>Stock</th>
+    <th>نام</th>
+    <th>قیمت</th>
+    <th>دسته بندی ها</th>
+    <th>تعداد موجود در انبار</th>
   </tr>
 );
 

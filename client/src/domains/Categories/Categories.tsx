@@ -9,8 +9,8 @@ import AddCategory from "./components/AddCategory";
 
 const Header = () => (
   <tr>
-    <th>Name</th>
-    <th>Description</th>
+    <th>عنوان</th>
+    <th>توضیح</th>
   </tr>
 );
 

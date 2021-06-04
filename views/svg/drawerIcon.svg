@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="drawer" transform="translate(-33 -32)">
+    <g id="uc_web_mainmenu_01-960" transform="translate(33 32)">
+      <g id="menu" transform="translate(-33 -32)">
+        <g id="drawer-2" data-name="drawer" transform="translate(9 8)">
+          <g id="flora_ecommerce_web_ico_drawer_01" transform="translate(24 24)">
+            <rect id="container" width="32" height="32" fill="none"/>
+            <path id="flora_ecommerce_web_ico_drawer_01-2" data-name="flora_ecommerce_web_ico_drawer_01" d="M19958,12301.664c-.549,0-.994-.6-.994-1.331s.445-1.331.994-1.331h22c.557,0,1,.6,1,1.331s-.445,1.331-1,1.331Zm0-8c-.549,0-.994-.595-.994-1.33s.445-1.338.994-1.338h22c.557,0,1,.6,1,1.338s-.445,1.33-1,1.33Zm0-8c-.549,0-.994-.6-.994-1.331s.445-1.331.994-1.331h22c.557,0,1,.6,1,1.331s-.445,1.331-1,1.331Z" transform="translate(-19952.998 -12276.335)" fill="#494949"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

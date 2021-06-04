@@ -17,6 +17,7 @@ const PrivateChat = ({
   messages,
   setMessages,
   socket,
+  loading,
 }) => {
   const styles = usePrivateChatStyle();
   const { formatMessage } = useIntl();
@@ -94,34 +95,46 @@ const PrivateChat = ({
 
       <div className={styles.body} ref={msgRef}>
         {selectedContact ? (
-          <div className={styles.messages}>
-            {messages.map((item) => (
-              <div className={styles.message}>
-                <div
-                  className={
-                    item?.fromUser?._id === localStorage?.userId ||
-                    item?.fromUser === localStorage?.userId
-                      ? styles.spaceBetweenMe
-                      : styles.spaceBetween
-                  }
-                >
-                  <div className={styles.avatar}></div>
-                  <div className={styles.date}>
-                    {new Date(item?.dateTime).toLocaleTimeString()}
-                  </div>
-                </div>
-                <div
-                  className={
-                    item?.fromUser?._id === localStorage?.userId ||
-                    item?.fromUser === localStorage?.userId
-                      ? styles.bottomMe
-                      : styles.bottom
-                  }
-                >
-                  {item?.body}
-                </div>
-              </div>
-            ))}
+          <div>
+            {!loading ? (
+              <>
+                {messages?.length ? (
+                  <>
+                    {messages?.map((item) => (
+                      <div className={styles.message}>
+                        <div
+                          className={
+                            item?.fromUser?._id === localStorage?.userId ||
+                            item?.fromUser === localStorage?.userId
+                              ? styles.spaceBetweenMe
+                              : styles.spaceBetween
+                          }
+                        >
+                          <div className={styles.avatar}></div>
+                          <div className={styles.date}>
+                            {new Date(item?.dateTime).toLocaleTimeString()}
+                          </div>
+                        </div>
+                        <div
+                          className={
+                            item?.fromUser?._id === localStorage?.userId ||
+                            item?.fromUser === localStorage?.userId
+                              ? styles.bottomMe
+                              : styles.bottom
+                          }
+                        >
+                          {item?.body}
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  "No Messages"
+                )}
+              </>
+            ) : (
+              "loading..."
+            )}
           </div>
         ) : (
           <>{formatMessage(MessangerMessages.noMessage)}</>

@@ -98,6 +98,18 @@ export const useMessangerStyle = makeGolStyles(
       textTransform: "uppercase",
       fontWeight: 500,
     },
+    counter: {
+      background: palette.error.main,
+      alignSelf: "center",
+      margin: spacing(2),
+      borderRadius: "50%",
+      width: 20,
+      height: 20,
+      justifyContent: "center",
+      alignItems: "center",
+      display: "flex",
+      color: palette.neutral[100],
+    },
   }),
   { name: "SideBar" }
 );

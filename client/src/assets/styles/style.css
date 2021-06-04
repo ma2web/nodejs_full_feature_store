@@ -109,6 +109,10 @@ a {
   cursor: pointer;
 }
 
+img {
+  max-width: 100%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

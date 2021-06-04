@@ -30,11 +30,11 @@ export const LanguageSelector: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <button onClick={() => handleClick("en-US")}>en</button>
-      <button onClick={() => handleClick("fa-IR")}>fa</button>
-      <button onClick={() => handleClick("ar-AR")}>ar</button>
-      <button onClick={() => setPalette("Dark")}>dark</button>
-      <button onClick={() => setPalette("Light")}>light</button>
+      <button onClick={() => handleClick("fa-IR")}>راست چین</button>
+      <button onClick={() => handleClick("en-US")}>چپ چین</button>
+      {/* <button onClick={() => handleClick("ar-AR")}>ar</button> */}
+      <button onClick={() => setPalette("Dark")}>تاریک</button>
+      <button onClick={() => setPalette("Light")}>روشن</button>
     </div>
   );
 };

@@ -10,14 +10,14 @@ const useStyles = makeGolStyles(({ palette, spacing }) => ({
     textAlign: "left",
   },
   header: {
-    background: palette.primary.main,
+    background: palette.neutral[500],
     color: palette.surface.default,
     "& th": {
       padding: spacing(2),
     },
   },
   row: {
-    background: palette.primary[100],
+    background: palette.neutral[200],
     "& td": {
       padding: spacing(1, 2),
     },

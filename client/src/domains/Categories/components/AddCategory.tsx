@@ -43,7 +43,7 @@ const AddCategory = ({ categories, setCategories }) => {
           <Grid xs={10} md={6}>
             <Card style={{ padding: 20 }}>
               <h3>
-                <Typography variant="h4">Add Category</Typography>
+                <Typography variant="h4">افزودن دسته بندی</Typography>
               </h3>
               <br />
               <form
@@ -68,7 +68,7 @@ const AddCategory = ({ categories, setCategories }) => {
               >
                 <TextField
                   type="text"
-                  label="Category Name"
+                  label="عنوان دسته بندی"
                   variant="outlined"
                   name="name"
                   onChange={(e) =>
@@ -79,7 +79,7 @@ const AddCategory = ({ categories, setCategories }) => {
                 <br />
                 <TextField
                   type="textarea"
-                  label="Category Description"
+                  label="توضیحات دسته بندی"
                   variant="outlined"
                   name="description"
                   onChange={(e) =>
@@ -94,7 +94,7 @@ const AddCategory = ({ categories, setCategories }) => {
                   variant="contained"
                   type="submit"
                 >
-                  Create
+                  ساختن
                 </Button>{" "}
                 <Button
                   color="primary"
@@ -102,7 +102,7 @@ const AddCategory = ({ categories, setCategories }) => {
                   variant="outlined"
                   onClick={handleClose}
                 >
-                  Cancel
+                  انصراف
                 </Button>
               </form>
             </Card>

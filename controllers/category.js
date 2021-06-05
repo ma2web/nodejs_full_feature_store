@@ -17,7 +17,7 @@ module.exports = {
     res.send(popular);
   },
   getOne: async (req, res) => {
-    await Category.findById(req.params.id)
+    await Category.findOne({ _id: req.params.id })
       .populate("user")
       .then(async (data) => {
         if (!data) return res.status(400).send("category not found");

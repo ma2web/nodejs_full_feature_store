@@ -47,6 +47,10 @@ let schema = new mongoose.Schema(
       ...n,
       default: 0,
     },
+    view: {
+      ...n,
+      default: 0,
+    },
   },
   { timestamps: true }
 );

@@ -58,7 +58,19 @@ module.exports = {
       .then((data) => {
         if (!data) return res.status(404).send("not found");
 
-        return res.send(data);
+        if (req.user && req.user._id === data.user._id) {
+          return res.send(data);
+        } else {
+          await Product.updateOne(
+            { _id: data._id },
+            { view: data.view + 1 },
+            (err, data) => {
+              if (err) return res.status(400).send(err.message);
+
+              return res.send(data);
+            }
+          );
+        }
       });
   },
   create: async (req, res) => {

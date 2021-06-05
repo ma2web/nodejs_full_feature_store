@@ -17,6 +17,6 @@ router.get("/api/category-one/:id", getOne);
 router.post("/api/category", auth, create);
 router.put("/api/category/:id", auth, update);
 router.delete("/api/category/:id", auth, remove);
-router.delete("/api/category-popular", auth, popular);
+router.get("/api/category-popular", popular);
 
 module.exports = router;

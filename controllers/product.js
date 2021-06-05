@@ -64,7 +64,7 @@ module.exports = {
           await Product.updateOne(
             { _id: data._id },
             { view: data.view + 1 },
-            (err, data) => {
+            (err, x) => {
               if (err) return res.status(400).send(err.message);
 
               return res.send(data);

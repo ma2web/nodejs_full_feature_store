@@ -55,7 +55,7 @@ module.exports = {
     })
       .populate("categories")
       .populate("user")
-      .then((data) => {
+      .then(async (data) => {
         if (!data) return res.status(404).send("not found");
 
         if (req.user && req.user._id === data.user._id) {

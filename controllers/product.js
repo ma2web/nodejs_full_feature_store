@@ -47,6 +47,10 @@ module.exports = {
     }
     return res.json(products);
   },
+  popular: async (req, res) => {
+    let popular = await Product.find({});
+    res.send(popular);
+  },
   getOne: async (req, res) => {
     let { id } = req.params;
 
@@ -301,9 +305,5 @@ module.exports = {
     );
 
     res.send(result);
-  },
-  popular: async (req, res) => {
-    let popular = await Product.find({});
-    res.send(popular);
   },
 };

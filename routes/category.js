@@ -6,6 +6,7 @@ const {
   create,
   update,
   remove,
+  popular,
 } = require("../controllers/category");
 
 const auth = require("../middlwares/auth");
@@ -16,5 +17,6 @@ router.get("/api/category-one/:id", getOne);
 router.post("/api/category", auth, create);
 router.put("/api/category/:id", auth, update);
 router.delete("/api/category/:id", auth, remove);
+router.delete("/api/category-popular", auth, popular);
 
 module.exports = router;

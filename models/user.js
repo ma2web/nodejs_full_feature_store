@@ -13,20 +13,30 @@ var schema = new mongoose.Schema(
       ...rs,
       unique: true,
     },
-    countryCode: n,
+    countryCode: rn,
     phoneNumber: {
       ...rn,
       unique: true,
     },
     password: rs,
-    address: s,
+    address: [
+      {
+        type: {
+          ...s,
+          enum: ["home", "office", "school"],
+          default: "home",
+        },
+        countryCode: n,
+        phoneNumber: n,
+        address: s,
+      },
+    ],
     role: {
       ...s,
       default: "user",
       enum: ["super_admin", "admin", "user"],
     },
     active: Boolean,
-    address: s,
     socketId: s,
     avatar: s,
     store: {

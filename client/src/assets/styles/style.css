@@ -195,3 +195,7 @@ img {
     left: 0%;
   }
 }
+
+tr {
+  cursor: pointer;
+}

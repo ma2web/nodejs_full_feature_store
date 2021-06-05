@@ -4,7 +4,7 @@ const { s, rs, rref, ref } = require("../utils/mongo");
 var schema = new mongoose.Schema(
   {
     user: ref("user"),
-    name: rs,
+    name: { ...rs, unique: true },
     description: s,
     image: s,
   },

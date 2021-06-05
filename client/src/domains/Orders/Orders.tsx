@@ -19,7 +19,7 @@ const Header = () => (
   </tr>
 );
 
-const Row = ({ data, setOrder, setShowDetails }) => (
+const Row = ({ data, setOrder, setShowDetails, classes }) => (
   <>
     {data?.map((el) => (
       <tr
@@ -32,7 +32,23 @@ const Row = ({ data, setOrder, setShowDetails }) => (
         <td>{el?.customer?.email}</td>
         <td>{el?.customer?.phoneNumber}</td>
         <td>{el?.items?.length}</td>
-        <td>{el?.status}</td>
+        <td>
+          <span
+            className={
+              el?.status === "pending"
+                ? `${classes.status} ${classes.pending}`
+                : el?.status === "proccessing"
+                ? `${classes.status} ${classes.proccessing}`
+                : el?.status === "shipped"
+                ? `${classes.status} ${classes.shipped}`
+                : el?.status === "delivered"
+                ? `${classes.status} ${classes.delivered}`
+                : `${classes.status}`
+            }
+          >
+            {el?.status}
+          </span>
+        </td>
       </tr>
     ))}
   </>
@@ -74,6 +90,7 @@ const Orders = () => {
                 data={orders}
                 setOrder={setOrder}
                 setShowDetails={setShowDetails}
+                classes={classes}
               />
             }
           />

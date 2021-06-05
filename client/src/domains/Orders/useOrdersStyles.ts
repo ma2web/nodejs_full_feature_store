@@ -16,6 +16,25 @@ export const useOrdersStyles = makeGolStyles<{ changeStatus: boolean }>(
       display: "flex",
       justifyContent: "space-between",
     },
+    status: {
+      padding: spacing(0, 2),
+      borderRadius: 30,
+      cursor: "pointer",
+    },
+    pending: {
+      background: "yellow",
+    },
+    proccessing: {
+      background: palette.warning.main,
+    },
+    shipped: {
+      color: palette.neutral[100],
+      background: palette.info.main,
+    },
+    delivered: {
+      background: palette.success.main,
+      color: palette.neutral[100],
+    },
   }),
   { name: "orders" }
 );

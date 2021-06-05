@@ -218,12 +218,18 @@ const AddProduct = () => {
           <div>
             <Autocomplete
               fullWidth
-              options={["XXS", "XS", "S", "M", "L", "XL", "XXL"]}
+              options={["بزرگ", "متوسط", "کوچک"]}
               getOptionLabel={(option) => option}
               renderInput={(params) => (
                 <TextField {...params} variant="outlined" />
               )}
               onChange={(e, data) => {
+                let d =
+                  data === "کوچک"
+                    ? "small"
+                    : data === "متوسط"
+                    ? "normal"
+                    : "large";
                 setSize(data);
               }}
             />
@@ -279,17 +285,17 @@ const AddProduct = () => {
                 if (res?.data) {
                   var formdata = new FormData();
                   formdata.append("image", imageFileName);
-                  axios
-                    .post(
-                      `${api}/api/product/upload/${res?.data?._id}`,
-                      formdata,
-                      {
-                        headers: {
-                          "x-auth-token": localStorage.token,
-                        },
-                      }
-                    )
-                    .then((res) => push("/products"));
+                  axios.post(
+                    `${api}/api/product/upload/${res?.data?._id}`,
+                    formdata,
+                    {
+                      headers: {
+                        "x-auth-token": localStorage.token,
+                      },
+                    }
+                  );
+
+                  push("/products");
                 }
               })
               .catch((err) => console.log(err));

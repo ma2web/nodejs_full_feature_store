@@ -5,7 +5,7 @@ let sizeSchema = new mongoose.Schema(
   {
     size: {
       ...rs,
-      enum: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
+      enum: ["large", "normal", "small"],
     },
     price: rn,
   },
@@ -28,7 +28,7 @@ let commentSchema = new mongoose.Schema(
 let schema = new mongoose.Schema(
   {
     user: rref("user"),
-    name: rs,
+    name: { ...rs, unique: true },
     description: s,
     images: [s],
     price: rn,

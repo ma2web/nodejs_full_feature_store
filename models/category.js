@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { s, rs, rref, ref } = require("../utils/mongo");
+const { s, rs, n, ref } = require("../utils/mongo");
 
 var schema = new mongoose.Schema(
   {

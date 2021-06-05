@@ -12,10 +12,30 @@ module.exports = {
     let categories = await Category.find(query).populate("user");
     res.json(categories);
   },
+  popular: async (req, res) => {
+    let popular = await Category.find({}).sort({ view: -1 });
+    res.send(popular);
+  },
   getOne: async (req, res) => {
-    let category = await Category.findById(req.params.id);
-    if (!category) return res.status(400).send("category not found");
-    res.send(category);
+    await Category.findById(req.params.id)
+      .populate("user")
+      .then(async (data) => {
+        if (!data) return res.status(400).send("category not found");
+
+        if (req.user && req.user._id === data.user._id) {
+          res.send(data);
+        } else {
+          await Category.updateOne(
+            { _id: data._id },
+            { view: data.view + 1 },
+            (err, x) => {
+              if (err) return res.status(400).send(err.message);
+
+              res.send(data);
+            }
+          );
+        }
+      });
   },
   create: async (req, res) => {
     let { error } = createValidator(req.body);

@@ -7,6 +7,10 @@ var schema = new mongoose.Schema(
     name: { ...rs, unique: true },
     description: s,
     image: s,
+    view: {
+      ...n,
+      default: 0,
+    },
   },
   { timestamps: true }
 );

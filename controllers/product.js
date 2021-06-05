@@ -48,7 +48,7 @@ module.exports = {
     return res.json(products);
   },
   popular: async (req, res) => {
-    let popular = await Product.find({}).sort("view");
+    let popular = await Product.find({}).sort({ view: -1 });
     res.send(popular);
   },
   getOne: async (req, res) => {

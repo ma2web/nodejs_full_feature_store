@@ -303,7 +303,7 @@ module.exports = {
     res.send(result);
   },
   popular: async (req, res) => {
-    let popular = await Product.find({}).sort("view", -1);
+    let popular = await Product.find({});
     res.send(popular);
   },
 };

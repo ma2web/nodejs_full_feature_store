@@ -51,6 +51,6 @@ router.post("/api/product/remove-tag/:productId", auth, removeTag);
 router.post("/api/product/size/:productId", [auth, admin], addSize);
 router.post("/api/product/remove-size/:productId", [auth, admin], removeSize);
 router.get("/api/product/filter/:type", auth, filter);
-router.get("/api/product/popular", auth, popular);
+router.get("/api/product-popular", auth, popular);
 
 module.exports = router;

@@ -132,7 +132,7 @@ export const DashboardLayout: FC = ({ children }) => {
               }
             >
               <div>
-                {children}
+                <div className={classes.childrenContent}>{children}</div>
 
                 <Messanger {...{ setOpenChat, openChat }} />
               </div>

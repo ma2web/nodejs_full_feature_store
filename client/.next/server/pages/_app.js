@@ -206,7 +206,7 @@ exports.cancelIdleCallback = cancelIdleCallback;
 /***/ "0NfA":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"panel.dashboard.dashboard\":\"داشبورد\",\"panel.dashboard.search\":\"جستجو\",\"panel.dashboard.dragAndDrop\":\"صفحه مورد نظر را اینجا بکشید\",\"panel.dashboard.seeMoreNotif\":\"مشاهده همه اعلان ها\",\"panel.dashboard.users\":\"کاربران\",\"panel.dashboard.settings\":\"تنظیمات\",\"panel.dashboard.themeCustomize\":\"تنظیمات قالب\",\"panel.dashboard.skin\":\"پوسته\",\"panel.dashboard.light\":\"روشن\",\"panel.dashboard.dark\":\"تاریک\",\"panel.dashboard.semiDark\":\"تاریک ۲\",\"panel.dashboard.fontSelector\":\"انتخاب فونت\",\"panel.dashboard.langSelector\":\"انتخاب زیان\",\"panel.dashboard.currencyType\":\"واحد پولی\",\"panel.dashboard.sayHello\":\"سلام,\",\"panel.dashboard.administrator\":\"مدیر\",\"panel.messanger.messaging\":\"گفتگو\",\"panel.auth.SingInPage.subTitle\":\"اجازه تغییر به دنیا بده!\",\"panel.auth.SingInPage.title\":\"خوش آمدید\",\"panel.auth.SingInPage.email\":\"ایمیل\",\"panel.auth.SingInPage.phone\":\"همراه\",\"panel.auth.SingInPage.emailInput\":\"آدرس ایمیل شما\",\"panel.auth.SingInPage.phoneInput\":\"شماره شما\",\"panel.auth.SingInPage.passInput\":\"رمز عبور\",\"panel.auth.SingInPage.forgetPassLink\":\"فراموشی رمز عبور؟\",\"panel.auth.SingInPage.notHaveAccount\":\"حساب کاربری ندارید؟\",\"panel.auth.SingInPage.signUp\":\" ثبت نام\",\"panel.auth.SingInPage.signIn\":\"ورود\",\"panel.auth.SingInPage.signInWithGoogle\":\"ورود با اکانت گوگل\",\"panel.auth.Auth.signInMessage1\":\"نرم افزار مارکت\",\"panel.auth.Auth.signInMessage2\":\"بستری برای خرید امن\",\"panel.auth.Auth.allready\":\"ثبت نام\",\"panel.auth.SignUpPageM.allready\":\"قبلا ثبت نام کرده اید؟\",\"panel.auth.SignUpPageM.signIn\":\"ورود\",\"panel.auth.SignUpPageM.signUp\":\"ثبت نام\",\"panel.auth.SignUpPageM.title\":\"عضویت\",\"panel.auth.SignUpPageM.subTitle\":\"اجازه تغییر به دنیا بده!\",\"panel.auth.SignUpPageM.phoneWay\":\"عضویت با شماره موبایل\",\"panel.auth.SignUpPageM.emailWay\":\"عضویت با ایمیل\",\"panel.auth.SignUpPageM.phoneInput\":\"شماره موبایل\",\"panel.auth.SignUpPageM.signInWithGoogle\":\"عضویت با اکانت گوگل\",\"panel.auth.SignUpPageM.fullNameInput\":\"نام و نام خانوادگی\",\"panel.auth.SignUpPageM.emailInput\":\"ایمیل\",\"panel.auth.SignUpPageM.signInMessage2\":\"بستری برای خرید امن\",\"panel.notifications.notifications\":\"اعلانات\",\"panel.dashboard.myDesk\":\"میز کار من\",\"panel.desk.products\":\"محصولات\",\"panel.desk.categories\":\"دسته بندی ها\",\"panel.desk.orders\":\"سفارشات\",\"panel.products.products\":\"محصولات\",\"panel.orders.orders\":\"سفارشات\",\"panel.categories.categories\":\"دسته بندی ها\"}");
+module.exports = JSON.parse("{\"panel.dashboard.dashboard\":\"داشبورد\",\"panel.dashboard.search\":\"جستجو\",\"panel.dashboard.dragAndDrop\":\"صفحه مورد نظر را اینجا بکشید\",\"panel.dashboard.seeMoreNotif\":\"مشاهده همه اعلان ها\",\"panel.dashboard.users\":\"کاربران\",\"panel.dashboard.settings\":\"تنظیمات\",\"panel.dashboard.themeCustomize\":\"تنظیمات قالب\",\"panel.dashboard.skin\":\"پوسته\",\"panel.dashboard.light\":\"روشن\",\"panel.dashboard.dark\":\"تاریک\",\"panel.dashboard.semiDark\":\"تاریک ۲\",\"panel.dashboard.fontSelector\":\"انتخاب فونت\",\"panel.dashboard.langSelector\":\"انتخاب زیان\",\"panel.dashboard.currencyType\":\"واحد پولی\",\"panel.dashboard.sayHello\":\"سلام,\",\"panel.dashboard.administrator\":\"مدیر\",\"panel.messanger.messaging\":\"ارسال محصول\",\"panel.auth.SingInPage.subTitle\":\"اجازه تغییر به دنیا بده!\",\"panel.auth.SingInPage.title\":\"خوش آمدید\",\"panel.auth.SingInPage.email\":\"ایمیل\",\"panel.auth.SingInPage.phone\":\"همراه\",\"panel.auth.SingInPage.emailInput\":\"آدرس ایمیل شما\",\"panel.auth.SingInPage.phoneInput\":\"شماره شما\",\"panel.auth.SingInPage.passInput\":\"رمز عبور\",\"panel.auth.SingInPage.forgetPassLink\":\"فراموشی رمز عبور؟\",\"panel.auth.SingInPage.notHaveAccount\":\"حساب کاربری ندارید؟\",\"panel.auth.SingInPage.signUp\":\" ثبت نام\",\"panel.auth.SingInPage.signIn\":\"ورود\",\"panel.auth.SingInPage.signInWithGoogle\":\"ورود با اکانت گوگل\",\"panel.auth.Auth.signInMessage1\":\"نرم افزار مارکت\",\"panel.auth.Auth.signInMessage2\":\"بستری برای خرید امن\",\"panel.auth.Auth.allready\":\"ثبت نام\",\"panel.auth.SignUpPageM.allready\":\"قبلا ثبت نام کرده اید؟\",\"panel.auth.SignUpPageM.signIn\":\"ورود\",\"panel.auth.SignUpPageM.signUp\":\"ثبت نام\",\"panel.auth.SignUpPageM.title\":\"عضویت\",\"panel.auth.SignUpPageM.subTitle\":\"اجازه تغییر به دنیا بده!\",\"panel.auth.SignUpPageM.phoneWay\":\"عضویت با شماره موبایل\",\"panel.auth.SignUpPageM.emailWay\":\"عضویت با ایمیل\",\"panel.auth.SignUpPageM.phoneInput\":\"شماره موبایل\",\"panel.auth.SignUpPageM.signInWithGoogle\":\"عضویت با اکانت گوگل\",\"panel.auth.SignUpPageM.fullNameInput\":\"نام و نام خانوادگی\",\"panel.auth.SignUpPageM.emailInput\":\"ایمیل\",\"panel.auth.SignUpPageM.signInMessage2\":\"بستری برای خرید امن\",\"panel.notifications.notifications\":\"اعلانات\",\"panel.dashboard.myDesk\":\"میز کار من\",\"panel.desk.products\":\"محصولات\",\"panel.desk.categories\":\"دسته بندی ها\",\"panel.desk.orders\":\"سفارشات\",\"panel.products.products\":\"محصولات\",\"panel.orders.orders\":\"سفارشات\",\"panel.categories.categories\":\"دسته بندی ها\"}");
 
 /***/ }),
 
@@ -5481,6 +5481,11 @@ const useDashboardStyle = Object(src_theme["b" /* makeGolStyles */])(({
     color: palette.neutral[600],
     position: "relative"
   },
+  childrenContent: {
+    width: "100%",
+    height: "100vh",
+    overflow: "auto"
+  },
   myDesk: {
     backgroundColor: palette.surface.default,
     width: 226,
@@ -6629,7 +6634,10 @@ const DashboardLayout = ({
             filter: openSystemMenu ? "blur(2px)" : "blur(0)"
           },
           children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-            children: [children, /*#__PURE__*/Object(jsx_runtime_["jsx"])(chat_Messanger, DashboardLayout_objectSpread({}, {
+            children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+              className: classes.childrenContent,
+              children: children
+            }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(chat_Messanger, DashboardLayout_objectSpread({}, {
               setOpenChat,
               openChat
             }))]

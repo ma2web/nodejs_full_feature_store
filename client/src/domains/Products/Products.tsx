@@ -16,10 +16,11 @@ const Header = () => (
     <th>قیمت</th>
     <th>دسته بندی ها</th>
     <th>تعداد موجود در انبار</th>
+    <th>حذف مورد</th>
   </tr>
 );
 
-const Row = ({ data, push }) => (
+const Row = ({ data, push, classes, setProducts }) => (
   <>
     {data?.map((el) => (
       <tr key={el?._id} onClick={() => push(`/product/?id=${el?._id}`)}>
@@ -36,6 +37,32 @@ const Row = ({ data, push }) => (
           ))}
         </td>
         <td>{el?.stock}</td>
+        <td
+          onClick={(e) => {
+            e.stopPropagation();
+            let confirm = window.confirm("آیا از حذف این مورد مطمئن هستید؟");
+
+            if (confirm) {
+              axios
+                .delete(`${api}/api/product/${el?._id}`, {
+                  headers: {
+                    "x-auth-token": localStorage.token,
+                  },
+                })
+                .then((result) => {
+                  if (result?.status === 200) {
+                    axios
+                      .get(`${api}/api/products`)
+                      .then((res) => setProducts(res?.data))
+                      .catch((err) => console.log(err));
+                  }
+                })
+                .catch((err) => alert("err: " + err));
+            }
+          }}
+        >
+          <span className={classes.error}>حذف</span>
+        </td>
       </tr>
     ))}
   </>
@@ -58,7 +85,17 @@ const Products = () => {
       <h1>{formatMessage(ProductsMessages.products)}</h1>
       <br />
       <div>
-        <Table header={<Header />} row={<Row data={products} push={push} />} />
+        <Table
+          header={<Header />}
+          row={
+            <Row
+              classes={classes}
+              setProducts={setProducts}
+              data={products}
+              push={push}
+            />
+          }
+        />
       </div>
       <div style={{ position: "absolute", right: 20, bottom: 20 }}>
         <Fab

@@ -11,6 +11,11 @@ export const useDashboardStyle = makeGolStyles(
       color: palette.neutral[600],
       position: "relative",
     },
+    childrenContent: {
+      width: "100%",
+      height: "100vh",
+      overflow: "auto",
+    },
     myDesk: {
       backgroundColor: palette.surface.default,
       width: 226,

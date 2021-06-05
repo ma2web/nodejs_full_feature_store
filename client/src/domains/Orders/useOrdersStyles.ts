@@ -20,20 +20,22 @@ export const useOrdersStyles = makeGolStyles<{ changeStatus: boolean }>(
       padding: spacing(0, 2),
       borderRadius: 30,
       cursor: "pointer",
+      background: palette.error.main,
+      color: palette.neutral[100],
     },
     pending: {
       background: "yellow",
+      color: palette.neutral[400],
     },
     proccessing: {
+      color: palette.neutral[400],
       background: palette.warning.main,
     },
     shipped: {
-      color: palette.neutral[100],
-      background: palette.info.main,
+      background: palette.primary[500],
     },
     delivered: {
       background: palette.success.main,
-      color: palette.neutral[100],
     },
   }),
   { name: "orders" }

@@ -144,7 +144,20 @@ const AddProduct = () => {
         <div>
           <ul>
             {product?.categories?.map((el) => (
-              <li>{el?.name}</li>
+              <li
+                onClick={() => {
+                  let data = product?.categories?.filter(
+                    (i) => i?.name !== el?.name
+                  );
+
+                  setProduct({
+                    ...product,
+                    categories: data,
+                  });
+                }}
+              >
+                {el?.name}
+              </li>
             ))}
           </ul>
         </div>
@@ -159,11 +172,11 @@ const AddProduct = () => {
               )}
               onChange={(e, data) => {
                 setCategory(data);
-                if (sCategories.includes(data._id)) {
-                  let newC = sCategories.filter((sc) => sc !== data._id);
+                if (sCategories.includes(data?._id)) {
+                  let newC = sCategories.filter((sc) => sc !== data?._id);
                   setSCategories(newC);
                 } else {
-                  setSCategories([...sCategories, data._id]);
+                  setSCategories([...sCategories, data?._id]);
                 }
               }}
             />
@@ -172,12 +185,20 @@ const AddProduct = () => {
             <Button
               color="primary"
               variant="outlined"
-              onClick={() =>
-                setProduct({
-                  ...product,
-                  categories: [...product.categories, category],
-                })
-              }
+              onClick={() => {
+                if (category) {
+                  if (product?.categories.includes(category)) {
+                    alert("دسته بندی مورد نظر را از قبل انتخاب شده است");
+                  } else {
+                    setProduct({
+                      ...product,
+                      categories: [...product.categories, category],
+                    });
+                  }
+                } else {
+                  alert("دسته بندی مورد نظر را انتخاب کنید");
+                }
+              }}
             >
               افزودن
             </Button>
@@ -207,7 +228,18 @@ const AddProduct = () => {
           <ul>
             {product?.sizes?.length
               ? product?.sizes?.map((el) => (
-                  <li>
+                  <li
+                    onClick={() => {
+                      let data = product?.sizes?.filter(
+                        (i) => i?.size !== el?.size
+                      );
+
+                      setProduct({
+                        ...product,
+                        sizes: data,
+                      });
+                    }}
+                  >
                     {el?.size} - {el?.price}
                   </li>
                 ))
@@ -230,7 +262,7 @@ const AddProduct = () => {
                     : data === "متوسط"
                     ? "normal"
                     : "large";
-                setSize(data);
+                setSize(d);
               }}
             />
           </div>
@@ -248,10 +280,16 @@ const AddProduct = () => {
               color="primary"
               variant="outlined"
               onClick={() => {
-                setProduct({
-                  ...product,
-                  sizes: [...product.sizes, { size, price: sizePrice }],
-                });
+                if (sizePrice && size) {
+                  setProduct({
+                    ...product,
+                    sizes: [...product.sizes, { size, price: sizePrice }],
+                  });
+                  setSizePrice("");
+                  setSize("");
+                } else {
+                  alert("قیمت و سایز را انتخاب کنید");
+                }
               }}
             >
               افزودن
@@ -266,7 +304,7 @@ const AddProduct = () => {
           variant="outlined"
           onClick={() => {
             let data = product;
-            if (data.stock > 0) {
+            if (data?.stock > 0) {
               data.inStock = true;
             } else {
               data.inStock = true;
@@ -284,7 +322,7 @@ const AddProduct = () => {
               .then((res) => {
                 if (res?.data) {
                   var formdata = new FormData();
-                  formdata.append("image", imageFileName);
+                  formdata?.append("image", imageFileName);
                   axios.post(
                     `${api}/api/product/upload/${res?.data?._id}`,
                     formdata,

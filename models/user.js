@@ -10,15 +10,15 @@ var schema = new mongoose.Schema(
     username: s,
     name: s,
     email: {
-      ...rs,
+      ...s,
       unique: true,
     },
-    countryCode: rn,
+    countryCode: n,
     phoneNumber: {
-      ...rn,
+      ...n,
       unique: true,
     },
-    password: rs,
+    password: s,
     address: [
       {
         type: {

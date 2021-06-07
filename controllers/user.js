@@ -190,7 +190,43 @@ module.exports = {
 
     res.header("x-auth-token", token).send({ ...data, token });
   },
-  registerWithPhoneNumber: async (req, res) => {},
+  registerWithPhoneNumber: async (req, res) => {
+    let { firstName, lastName, phoneNumber, countryCode, otp } = req.body;
+    if (!otp) return res.status(401).send("missed otp value");
+
+    const user = await User.findOne({ phoneNumber });
+    if (user) return res.status(400).send("user already exist");
+
+    let newUser = new User(
+      pick(req.body, ["firstName", "lastName", "countryCode", "phoneNumber"])
+    );
+
+    await newUser.save();
+
+    const token = newUser.generateAuthToken();
+
+    let data = pick(newUser, [
+      "_id",
+      "firstName",
+      "lastName",
+      "countryCode",
+      "phoneNumber",
+    ]);
+
+    const token = user.generateAuthToken();
+
+    let secret = myCache.get(phoneNumber);
+
+    if (secret != otp) return res.status(400).send("wrong otp");
+
+    res.send({
+      message: "success",
+      user,
+      token,
+    });
+
+    res.header("x-auth-token", token).send({ ...data, token });
+  },
   userLogin: async (req, res) => {
     let { email, password } = req.body;
 

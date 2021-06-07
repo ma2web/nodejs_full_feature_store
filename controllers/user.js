@@ -201,7 +201,8 @@ module.exports = {
       pick(req.body, ["firstName", "lastName", "countryCode", "phoneNumber"])
     );
 
-    await newUser.save();
+    newUser = await newUser.save();
+    const token = newUser.generateAuthToken();
 
     let data = pick(newUser, [
       "_id",
@@ -211,15 +212,13 @@ module.exports = {
       "phoneNumber",
     ]);
 
-    const token = user.generateAuthToken();
-
     let secret = myCache.get(phoneNumber);
 
     if (secret != otp) return res.status(400).send("wrong otp");
 
     res.send({
       message: "success",
-      user,
+      user: newUser,
       token,
     });
 

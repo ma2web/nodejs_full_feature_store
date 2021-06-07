@@ -9,10 +9,7 @@ var schema = new mongoose.Schema(
     lastName: s,
     username: s,
     name: s,
-    email: {
-      ...s,
-      unique: true,
-    },
+    email: s,
     countryCode: n,
     phoneNumber: {
       ...n,

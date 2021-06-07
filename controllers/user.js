@@ -197,9 +197,13 @@ module.exports = {
     const user = await User.findOne({ phoneNumber });
     if (user) return res.status(400).send("user already exist");
 
-    let newUser = new User(
-      pick(req.body, ["firstName", "lastName", "countryCode", "phoneNumber"])
-    );
+    let newUser = new User({
+      firstName,
+      lastName,
+      phoneNumber,
+      countryCode,
+      email: phoneNumber,
+    });
 
     newUser = await newUser.save();
     const token = newUser.generateAuthToken();

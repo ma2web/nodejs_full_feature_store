@@ -203,8 +203,6 @@ module.exports = {
 
     await newUser.save();
 
-    const token = newUser.generateAuthToken();
-
     let data = pick(newUser, [
       "_id",
       "firstName",

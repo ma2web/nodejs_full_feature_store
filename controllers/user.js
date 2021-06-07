@@ -157,9 +157,6 @@ module.exports = {
   userRegister: async (req, res) => {
     let { email, password } = req.body;
 
-    let { error } = userRegisterValidator(req.body);
-    if (error) return res.status(400).send({ message: error.message });
-
     const user = await User.findOne({ email });
     if (user) return res.status(400).send("user already exist");
 
@@ -193,11 +190,9 @@ module.exports = {
 
     res.header("x-auth-token", token).send({ ...data, token });
   },
+  registerWithPhoneNumber: async (req, res) => {},
   userLogin: async (req, res) => {
     let { email, password } = req.body;
-
-    let { error } = userLoginValidator(req.body);
-    if (error) return res.status(400).send({ message: error.message });
 
     const user = await User.findOne({ email });
     if (!user) return res.status(400).send("user not exist");

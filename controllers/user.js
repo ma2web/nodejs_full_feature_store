@@ -194,7 +194,7 @@ module.exports = {
     if (!otp) return res.status(401).send("missed otp value");
 
     const user = await User.findOne({ phoneNumber });
-    if (user) return res.status(400).send("user already exist");
+    if (user) return res.status(409).send("user already exist");
 
     let newUser = new User({
       firstName,
@@ -349,30 +349,6 @@ module.exports = {
         console.log(err);
         return res.status(500).send(err);
       });
-  },
-  verifyCode: async (req, res) => {
-    const { otp } = req.body;
-    if (!otp) return res.status(401).send("missed otp value");
-    const phoneNumber = req.body.phoneNumber;
-    const user = await User.findOne({ phoneNumber });
-    if (!user)
-      return res
-        .status(404)
-        .send(
-          "user not found, please sign up or filled you country code and phone number"
-        );
-
-    const token = user.generateAuthToken();
-
-    let secret = myCache.get(phoneNumber);
-
-    if (secret != otp) return res.status(400).send("wrong otp");
-
-    res.send({
-      message: "success",
-      user,
-      token,
-    });
   },
   verifyCode: async (req, res) => {
     const { otp } = req.body;

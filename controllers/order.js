@@ -24,7 +24,7 @@ module.exports = {
       .populate("store")
       .populate("customer")
       .populate("items.item")
-      .sort({ msgCounter: -1 });
+      .sort({ updatedAt: -1 });
 
     return res.json(orders);
   },

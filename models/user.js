@@ -20,7 +20,6 @@ var schema = new mongoose.Schema(
       {
         type: {
           ...s,
-          enum: ["home", "office", "school"],
           default: "home",
         },
         countryCode: n,

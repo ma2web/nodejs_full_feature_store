@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { s, rs, rref, rn } = require("../utils/mongo");
+const { s, rs, rref, rn, n } = require("../utils/mongo");
 
 var schema = new mongoose.Schema(
   {
@@ -17,6 +17,10 @@ var schema = new mongoose.Schema(
         size: rs,
       },
     ],
+    msgCounter: {
+      ...n,
+      default: 0,
+    },
   },
   { timestamps: true }
 );

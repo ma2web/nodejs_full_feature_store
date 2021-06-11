@@ -9,8 +9,22 @@ module.exports = {
       return res.status(401).send("Access Denied");
     }
     let orders = await Order.find({ store: user._id })
+      .populate("store")
       .populate("customer")
       .populate("items.item");
+
+    return res.json(orders);
+  },
+  getAllConversations: async (req, res) => {
+    let user = req.user;
+    if (!user) {
+      return res.status(401).send("Access Denied");
+    }
+    let orders = await Order.find({ customer: user._id })
+      .populate("store")
+      .populate("customer")
+      .populate("items.item")
+      .sort({ msgCounter: -1 });
 
     return res.json(orders);
   },

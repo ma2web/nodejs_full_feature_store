@@ -144,6 +144,9 @@ server.listen(port, (err) => {
 
       let or = await Order.findById(order);
       io.emit("newConversation", or);
+      or.msgCounter = or.msgCounter + 1;
+
+      await or.save();
 
       let message = {
         fromUser,

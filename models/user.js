@@ -27,6 +27,7 @@ var schema = new mongoose.Schema(
         address: s,
       },
     ],
+    currentAccount: s,
     role: {
       ...s,
       default: "user",

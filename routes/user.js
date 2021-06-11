@@ -13,6 +13,9 @@ const {
   verifyCode,
   pushNotification,
   registerWithPhoneNumber,
+  addAddress,
+  editAddress,
+  removeAddress,
 } = require("../controllers/user");
 const auth = require("../middlwares/auth");
 const admin = require("../middlwares/admin");
@@ -26,6 +29,9 @@ router.put("/api/user/:id", auth, update);
 router.post("/api/user/upload/:id", upload);
 router.post("/api/user/otp", sendCode);
 router.post("/api/user/verify", verifyCode);
+router.post("/api/user/address/add/:userId", addAddress);
+router.put("/api/user/address/edit/:addressId/:userId", editAddress);
+router.delete("/api/user/address/remove/:addressId/:userId", removeAddress);
 router.post("/api/user/register-with-phone", registerWithPhoneNumber);
 router.post("/api/user/push", pushNotification);
 router.get("/api/stores", getAllStores);

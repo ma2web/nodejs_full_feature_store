@@ -402,4 +402,44 @@ module.exports = {
         res.status(402).json(error);
       });
   },
+  addAddress: async (req, res) => {
+    let { id } = req.params;
+    let { type, countryCode, phoneNumber, address } = req.body;
+
+    let user = await User.findOne({ _id: id });
+    if (!user) return res.status(404).send("user not found");
+
+    user.address.push({ type, countryCode, phoneNumber, address });
+    user = await user.save();
+    res.send(user);
+  },
+  editAddress: async (req, res) => {
+    let { addressId, userId } = req.params;
+    let { type, countryCode, phoneNumber, address } = req.body;
+
+    let user = await User.findOne({ _id: userId });
+    if (!user) return res.status(404).send("user not found");
+
+    let addressf = user.address.id(addressId);
+    if (!addressf) return res.status(404).send("address not found");
+
+    if (type) addressf.type = type;
+    if (countryCode) addressf.countryCode = countryCode;
+    if (phoneNumber) addressf.phoneNumber = phoneNumber;
+    if (address) addressf.address = address;
+
+    await user.save();
+    res.send("address has been updated");
+  },
+  removeAddress: async (req, res) => {
+    let { addressId, userId } = req.params;
+
+    let user = await User.findOne({ _id: userId });
+    if (!user) return res.status(404).send("user not found");
+
+    user.address.id(addressId).remove();
+
+    await user.save();
+    res.send("address has been removed");
+  },
 };

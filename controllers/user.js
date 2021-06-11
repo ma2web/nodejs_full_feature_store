@@ -403,10 +403,10 @@ module.exports = {
       });
   },
   addAddress: async (req, res) => {
-    let { id } = req.params;
+    let { userId } = req.params;
     let { type, countryCode, phoneNumber, address } = req.body;
 
-    let user = await User.findOne({ _id: id });
+    let user = await User.findOne({ _id: userId });
     if (!user) return res.status(404).send("user not found");
 
     user.address.push({ type, countryCode, phoneNumber, address });

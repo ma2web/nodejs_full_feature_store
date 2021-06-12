@@ -97,7 +97,7 @@ module.exports = {
     });
     return res.json(orders);
   },
-  addItem: async (req, res0) => {
+  addItem: async (req, res) => {
     let { orderId } = req.params;
     let { item } = req.body;
 

@@ -97,4 +97,51 @@ module.exports = {
     });
     return res.json(orders);
   },
+  addItem: async (req, res0) => {
+    let { orderId } = req.params;
+    let { item } = req.body;
+
+    let order = await Order.findOne({ _id: orderId });
+    if (!order) return res.status(404).send("order not found");
+
+    if (order.status === "pending") {
+      order.items.push(item);
+      order = await order.save();
+      res.send("order has been added");
+    } else {
+      res.status(401).send("you cant edit this order, order is on the way");
+    }
+  },
+  removeItem: async (req, res) => {
+    let { orderId } = req.params;
+
+    let order = await Order.findOne({ _id: orderId });
+    if (!order) return res.status(404).send("order not found");
+
+    if (order.status === "pending") {
+      order.items.id(addressId).remove();
+      order = await order.save();
+      res.send("order has been removed");
+    } else {
+      res.status(401).send("you cant edit this order, order is on the way");
+    }
+  },
+  editItem: async (req, res) => {
+    let { orderId } = req.params;
+    let { item, count, size } = req.body;
+
+    let order = await Order.findOne({ _id: orderId });
+    if (!order) return res.status(404).send("order not found");
+
+    let orderf = order.items.id(orderId);
+    if (!orderf) return res.status(404).send("order not found");
+
+    if (item) orderf.item = item;
+    if (count) orderf.count = count;
+    if (phoneNumber) orderf.phoneNumber = phoneNumber;
+    if (size) orderf.size = size;
+
+    await user.save();
+    res.send("order has been updated");
+  },
 };

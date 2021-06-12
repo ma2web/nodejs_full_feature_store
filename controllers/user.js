@@ -291,7 +291,7 @@ module.exports = {
       },
       (err, data) => {
         if (err) return res.status(404).send(`Error: ` + err);
-
+        console.log(data);
         return res.send("user has been updated");
       }
     );

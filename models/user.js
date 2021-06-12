@@ -59,6 +59,7 @@ schema.methods.generateAuthToken = function () {
     socketId: this.socketId,
     store: this.store,
     currentAccount: this.currentAccount,
+    avatar: this.avatar,
   };
 
   return jwt.sign(data, config.get("jwtSecret"));

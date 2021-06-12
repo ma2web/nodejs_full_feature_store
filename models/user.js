@@ -27,7 +27,7 @@ var schema = new mongoose.Schema(
         address: s,
       },
     ],
-    currentAccount: s,
+    currentAddress: s,
     role: {
       ...s,
       default: "user",
@@ -58,7 +58,7 @@ schema.methods.generateAuthToken = function () {
     role: this.role,
     socketId: this.socketId,
     store: this.store,
-    currentAccount: this.currentAccount,
+    currentAddress: this.currentAddress,
     avatar: this.avatar,
   };
 

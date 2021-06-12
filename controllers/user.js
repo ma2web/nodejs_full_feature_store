@@ -284,7 +284,6 @@ module.exports = {
       return res.status(401).send("permission denied");
     }
 
-    console.log(req.body);
     await User.updateOne(
       { _id: req.user._id },
       {

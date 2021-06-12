@@ -104,12 +104,14 @@ module.exports = {
     let order = await Order.findOne({ _id: orderId });
     if (!order) return res.status(404).send("order not found");
 
-    if (order.status === "pending") {
+    if (order.status === "pending" && order.customer == req.user._id) {
       order.items.push(item);
       order = await order.save();
       res.send("order has been added");
     } else {
-      res.status(401).send("you cant edit this order, order is on the way");
+      res
+        .status(401)
+        .send("order status is not pending or this is not your order");
     }
   },
   removeItem: async (req, res) => {
@@ -118,12 +120,14 @@ module.exports = {
     let order = await Order.findOne({ _id: orderId });
     if (!order) return res.status(404).send("order not found");
 
-    if (order.status === "pending") {
+    if (order.status === "pending" && order.customer == req.user._id) {
       order.items.id(addressId).remove();
       order = await order.save();
       res.send("order has been removed");
     } else {
-      res.status(401).send("you cant edit this order, order is on the way");
+      res
+        .status(401)
+        .send("order status is not pending or this is not your order");
     }
   },
   editItem: async (req, res) => {
@@ -133,15 +137,21 @@ module.exports = {
     let order = await Order.findOne({ _id: orderId });
     if (!order) return res.status(404).send("order not found");
 
-    let orderf = order.items.id(orderId);
-    if (!orderf) return res.status(404).send("order not found");
+    if (order.status === "pending" && order.customer == req.user._id) {
+      let orderf = order.items.id(orderId);
+      if (!orderf) return res.status(404).send("order not found");
 
-    if (item) orderf.item = item;
-    if (count) orderf.count = count;
-    if (phoneNumber) orderf.phoneNumber = phoneNumber;
-    if (size) orderf.size = size;
+      if (item) orderf.item = item;
+      if (count) orderf.count = count;
+      if (phoneNumber) orderf.phoneNumber = phoneNumber;
+      if (size) orderf.size = size;
 
-    await user.save();
-    res.send("order has been updated");
+      await user.save();
+      res.send("order has been updated");
+    } else {
+      res
+        .status(401)
+        .send("order status is not pending or this is not your order");
+    }
   },
 };

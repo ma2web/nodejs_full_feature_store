@@ -15,6 +15,7 @@ module.exports = {
   updateValidator: (data) => {
     const schema = Joi.object({
       status: Joi.string(),
+      items: Joi.array(),
     });
 
     return schema.validate(data);

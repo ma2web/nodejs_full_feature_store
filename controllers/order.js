@@ -8,10 +8,7 @@ module.exports = {
     if (!user) {
       return res.status(401).send("Access Denied");
     }
-    let orders = await Order.find({ store: user._id })
-      .populate("store")
-      .populate("customer")
-      .populate("items.item");
+    let orders = await Order.find({ store: user._id });
 
     return res.json(orders);
   },
@@ -75,6 +72,10 @@ module.exports = {
   },
   update: async (req, res) => {
     let { id } = req.params;
+    let { status } = req.body;
+    if (status && req.user.role !== "admin") {
+      return res.status(401).send("customer can't change the status");
+    }
     await Order.updateOne(
       {
         _id: id,

@@ -10,13 +10,23 @@ module.exports = {
     if (!user) {
       return res.status(401).send("Access Denied");
     }
-    await Order.find({ store: user._id })
-      .populate("store")
-      .populate("customer")
-      .sort({ updatedAt: -1 })
-      .paginate({}, { page, limit }, (err, data) => {
-        res.json(data);
-      });
+    if (page && limit) {
+      await Order.find({ store: user._id })
+        .populate("store")
+        .populate("customer")
+        .sort({ updatedAt: -1 })
+        .paginate({}, { page, limit }, (err, data) => {
+          if (err) return res.status(400).send(err.message);
+          res.send(data);
+        });
+    } else {
+      const orders = await Order.find({ store: user._id })
+        .populate("store")
+        .populate("customer")
+        .sort({ updatedAt: -1 });
+
+      res.send(orders);
+    }
   },
   getAllConversations: async (req, res) => {
     let user = req.user;

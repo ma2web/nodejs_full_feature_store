@@ -9,7 +9,7 @@ module.exports = {
       return res.status(401).send("Access Denied");
     }
     let orders = await Order.find({ store: user._id })
-      .populate("items.item")
+      .populate("store")
       .populate("customer")
       .sort({ updatedAt: -1 });
 

@@ -31,6 +31,7 @@ const PrivateChat = ({
   const sendMessage = async (e) => {
     if (message) {
       e.preventDefault();
+
       const chatMessage = {
         fromUser: localStorage?.userId,
         toUser: selectedContact?.customer?._id,
@@ -41,10 +42,14 @@ const PrivateChat = ({
 
       socket.emit("sendMessage", chatMessage);
 
-      setMessages((prev) => [
-        ...prev,
-        { ...chatMessage, dateTime: new Date() },
-      ]);
+      if (messages?.length) {
+        setMessages((prev) => [
+          ...prev,
+          { ...chatMessage, dateTime: new Date() },
+        ]);
+      } else {
+        setMessage([{ ...chatMessage, dateTime: new Date() }]);
+      }
 
       setMessage("");
     }

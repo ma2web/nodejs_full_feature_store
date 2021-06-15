@@ -62,11 +62,12 @@ const Orders = () => {
 
   const [changeStatus, setChangeStatus] = useState(false);
   const classes = useOrdersStyles({ changeStatus });
-  console.log(socket);
+  const [page, setPage] = useState(0);
+  const [limit, setLimit] = useState(10);
 
   useEffect(() => {
     axios
-      .get(`${api}/api/order`, {
+      .get(`${api}/api/order/${page}/${limit}`, {
         headers: {
           "x-auth-token": localStorage.token,
         },
@@ -99,7 +100,7 @@ const Orders = () => {
         )}
       </div>
 
-      {showDetails ? (
+      {showDetails && order ? (
         <GolModal>
           <h2>جزئیات سفارش</h2>
           <br />
@@ -137,20 +138,24 @@ const Orders = () => {
           <div>
             <h4>سفارشات</h4>
             <div className={classes.data}>
-              {order?.items?.map((el) => {
-                let selectedSize = el?.size;
-                let allSizes = el?.item?.sizes;
-                let filterSize = allSizes.find(
-                  (el) => el?._id === selectedSize
-                );
-                return (
-                  <div key={el?._id} className={classes.items}>
-                    <div>{el?.item?.name}</div>
-                    <div>{filterSize?.size}</div>
-                    <div>{filterSize?.price}</div>
-                  </div>
-                );
-              })}
+              {order?.items?.length > 0 ? (
+                <>
+                  {order?.items?.map((el) => {
+                    let selectedSize = el?.size;
+                    let allSizes = el?.item?.sizes;
+                    let filterSize = allSizes?.find(
+                      (el) => el?._id === selectedSize
+                    );
+                    return (
+                      <div key={el?._id} className={classes.items}>
+                        <div>{el?.item?.name}</div>
+                        <div>{filterSize?.size}</div>
+                        <div>{filterSize?.price}</div>
+                      </div>
+                    );
+                  })}
+                </>
+              ) : null}
             </div>
           </div>
           <br />

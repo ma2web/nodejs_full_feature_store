@@ -110,27 +110,6 @@ function isDynamicRoute(route) {
 
 /***/ }),
 
-/***/ "/l56":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return socket; });
-/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("pI2v");
-/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _domains_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("aFs1");
-
-
-let socket;
-socket = socket_io_client__WEBPACK_IMPORTED_MODULE_0___default()(`${_domains_api__WEBPACK_IMPORTED_MODULE_1__[/* api */ "a"]}`, {
-  auth: {
-    token:  false && false
-  },
-  reconnection: true
-});
-
-
-/***/ }),
-
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3137,7 +3116,7 @@ var nprogress = __webpack_require__("pdi6");
 // EXTERNAL MODULE: ./src/assets/styles/style.css
 var style = __webpack_require__("DkZ7");
 
-// EXTERNAL MODULE: ./src/layout/CI/Layout/index.ts + 39 modules
+// EXTERNAL MODULE: ./src/layout/CI/Layout/index.ts + 40 modules
 var Layout = __webpack_require__("xLjY");
 
 // EXTERNAL MODULE: external "react-intl"
@@ -6014,7 +5993,7 @@ const PrivateChat = ({
   const {
     0: message,
     1: setMessage
-  } = Object(external_react_["useState"])("");
+  } = Object(external_react_["useState"])(null);
   const {
     0: unreadedMessages,
     1: setUnreadedMessages
@@ -6026,21 +6005,31 @@ const PrivateChat = ({
   const msgRef = Object(external_react_["useRef"])(null);
 
   const sendMessage = async e => {
-    var _localStorage, _selectedContact$cust;
+    if (message) {
+      var _localStorage, _selectedContact$cust;
 
-    e.preventDefault();
-    const chatMessage = {
-      fromUser: (_localStorage = localStorage) === null || _localStorage === void 0 ? void 0 : _localStorage.userId,
-      toUser: selectedContact === null || selectedContact === void 0 ? void 0 : (_selectedContact$cust = selectedContact.customer) === null || _selectedContact$cust === void 0 ? void 0 : _selectedContact$cust._id,
-      body: message,
-      order: orderId,
-      type: "text"
-    };
-    socket.emit("sendMessage", chatMessage);
-    setMessages(prev => [...prev, _objectSpread(_objectSpread({}, chatMessage), {}, {
-      dateTime: new Date()
-    })]);
-    setMessage("");
+      e.preventDefault();
+      const chatMessage = {
+        fromUser: (_localStorage = localStorage) === null || _localStorage === void 0 ? void 0 : _localStorage.userId,
+        toUser: selectedContact === null || selectedContact === void 0 ? void 0 : (_selectedContact$cust = selectedContact.customer) === null || _selectedContact$cust === void 0 ? void 0 : _selectedContact$cust._id,
+        body: message,
+        order: orderId,
+        type: "text"
+      };
+      socket.emit("sendMessage", chatMessage);
+
+      if (messages !== null && messages !== void 0 && messages.length) {
+        setMessages(prev => [...prev, _objectSpread(_objectSpread({}, chatMessage), {}, {
+          dateTime: new Date()
+        })]);
+      } else {
+        setMessage([_objectSpread(_objectSpread({}, chatMessage), {}, {
+          dateTime: new Date()
+        })]);
+      }
+
+      setMessage("");
+    }
   };
 
   Object(external_react_["useEffect"])(() => {
@@ -6286,11 +6275,23 @@ const useMessangerStyle = Object(src_theme["b" /* makeGolStyles */])(({
   name: "SideBar"
 });
 /* harmony default export */ var chat_useMessangerStyle = (useMessangerStyle);
-// EXTERNAL MODULE: ./src/utils/socket.ts
-var utils_socket = __webpack_require__("/l56");
+// EXTERNAL MODULE: external "socket.io-client"
+var external_socket_io_client_ = __webpack_require__("pI2v");
+var external_socket_io_client_default = /*#__PURE__*/__webpack_require__.n(external_socket_io_client_);
 
 // EXTERNAL MODULE: ./src/domains/api.js
 var api = __webpack_require__("aFs1");
+
+// CONCATENATED MODULE: ./src/utils/socket.ts
+
+
+let socket_socket;
+socket_socket = external_socket_io_client_default()(`${api["a" /* api */]}`, {
+  auth: {
+    token:  false && false
+  },
+  reconnection: true
+});
 
 // CONCATENATED MODULE: ./src/layout/CI/Layout/components/chat/Messanger.tsx
 
@@ -6362,7 +6363,7 @@ const Messanger = ({
       var _localStorage2;
 
       setLoading(true);
-      utils_socket["a" /* socket */].emit("join", {
+      socket_socket.emit("join", {
         order: selectedContact === null || selectedContact === void 0 ? void 0 : selectedContact._id
       });
       external_axios_default.a.get(`${api["a" /* api */]}/api/messages/${selectedContact === null || selectedContact === void 0 ? void 0 : selectedContact._id}`, {
@@ -6378,26 +6379,26 @@ const Messanger = ({
     }
   }, [selectedContact]);
   Object(external_react_["useEffect"])(() => {
-    utils_socket["a" /* socket */].on("receiveMessage", data => {
+    socket_socket.on("receiveMessage", data => {
       console.log("selectedContact, data ~ selectedContact, data", selectedContact === null || selectedContact === void 0 ? void 0 : selectedContact._id, data === null || data === void 0 ? void 0 : data.order);
 
       if ((selectedContact === null || selectedContact === void 0 ? void 0 : selectedContact._id) == (data === null || data === void 0 ? void 0 : data.order)) {
         setMessages(prev => [...prev, data]);
       }
     });
-    utils_socket["a" /* socket */].on("newConversation", data => {
+    socket_socket.on("newConversation", data => {
       if ((selectedContact === null || selectedContact === void 0 ? void 0 : selectedContact._id) !== (data === null || data === void 0 ? void 0 : data.order)) {
         setCounter(prev => [...prev, data === null || data === void 0 ? void 0 : data._id]);
       }
     });
-  }, [utils_socket["a" /* socket */]]);
+  }, [socket_socket]);
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
     children: [privateMessage && /*#__PURE__*/Object(jsx_runtime_["jsx"])(PrivateChat_PrivateChat, Messanger_objectSpread({}, {
       selectedContact,
       setPrivate,
       messages,
       setMessages,
-      socket: utils_socket["a" /* socket */],
+      socket: socket_socket,
       loading
     })), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
       className: styles.root,

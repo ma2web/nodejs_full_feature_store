@@ -10,7 +10,9 @@ module.exports = {
     }
     let orders = await Order.find({ store: user._id })
       .populate("store")
-      .populate("customer");
+      .populate("customer")
+      .populate("items.item")
+      .sort({ updatedAt: -1 });
 
     return res.json(orders);
   },

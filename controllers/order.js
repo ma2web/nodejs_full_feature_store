@@ -8,7 +8,9 @@ module.exports = {
     if (!user) {
       return res.status(401).send("Access Denied");
     }
-    let orders = await Order.find({ store: user._id });
+    let orders = await Order.find({ store: user._id })
+      .populate("store")
+      .populate("customer");
 
     return res.json(orders);
   },

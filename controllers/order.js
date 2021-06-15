@@ -14,6 +14,7 @@ module.exports = {
       await Order.find({ store: user._id })
         .populate("store")
         .populate("customer")
+        .populate("items.item")
         .sort({ updatedAt: -1 })
         .paginate({}, { page, limit }, (err, data) => {
           if (err) return res.status(400).send(err.message);
@@ -23,6 +24,7 @@ module.exports = {
       const orders = await Order.find({ store: user._id })
         .populate("store")
         .populate("customer")
+        .populate("items.item")
         .sort({ updatedAt: -1 });
 
       res.send(orders);

@@ -5,15 +5,18 @@ const { createValidator, updateValidator } = require("../validators/order");
 module.exports = {
   getAll: async (req, res) => {
     let user = req.user;
+    let { page, limit } = req.params;
+
     if (!user) {
       return res.status(401).send("Access Denied");
     }
-    let orders = await Order.find({ store: user._id })
+    await Order.find({ store: user._id })
       .populate("store")
       .populate("customer")
-      .sort({ updatedAt: -1 });
-
-    return res.json(orders);
+      .sort({ updatedAt: -1 })
+      .paginate({}, { page, limit }, (err, data) => {
+        res.json(data);
+      });
   },
   getAllConversations: async (req, res) => {
     let user = req.user;

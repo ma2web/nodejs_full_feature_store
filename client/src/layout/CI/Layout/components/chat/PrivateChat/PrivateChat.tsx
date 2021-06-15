@@ -22,27 +22,32 @@ const PrivateChat = ({
   const styles = usePrivateChatStyle();
   const { formatMessage } = useIntl();
   const [open, setOpen] = useState(true);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(null);
   const [unreadedMessages, setUnreadedMessages] = useState(0);
   const [orderId, setOrderId] = useState(selectedContact?._id);
 
   const msgRef = useRef(null);
 
   const sendMessage = async (e) => {
-    e.preventDefault();
-    const chatMessage = {
-      fromUser: localStorage?.userId,
-      toUser: selectedContact?.customer?._id,
-      body: message,
-      order: orderId,
-      type: "text",
-    };
+    if (message) {
+      e.preventDefault();
+      const chatMessage = {
+        fromUser: localStorage?.userId,
+        toUser: selectedContact?.customer?._id,
+        body: message,
+        order: orderId,
+        type: "text",
+      };
 
-    socket.emit("sendMessage", chatMessage);
+      socket.emit("sendMessage", chatMessage);
 
-    setMessages((prev) => [...prev, { ...chatMessage, dateTime: new Date() }]);
+      setMessages((prev) => [
+        ...prev,
+        { ...chatMessage, dateTime: new Date() },
+      ]);
 
-    setMessage("");
+      setMessage("");
+    }
   };
 
   useEffect(() => {

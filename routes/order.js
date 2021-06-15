@@ -16,7 +16,7 @@ const {
 const auth = require("../middlwares/auth");
 const admin = require("../middlwares/admin");
 
-router.get("/api/order", auth, getAll);
+router.get("/api/order/:page*?/:limit*?", auth, getAll);
 router.get("/api/customer-order", auth, customerOrder);
 router.get("/api/customer-order/conversations", auth, getAllConversations);
 router.get("/api/order/:id", auth, getOne);

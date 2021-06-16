@@ -15,7 +15,7 @@ var schema = new mongoose.Schema(
       {
         item: rref("product"),
         count: rn,
-        size: rs,
+        size: s,
       },
     ],
     msgCounter: {

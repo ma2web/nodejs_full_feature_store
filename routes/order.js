@@ -24,7 +24,7 @@ router.post("/api/order", auth, create);
 router.delete("/api/order/:id", auth, remove);
 router.put("/api/order/:id", auth, update);
 router.post("/api/order/add-item/:orderId", auth, addItem);
-router.delete("/api/order/remove-item/:orderId", auth, removeItem);
+router.delete("/api/order/remove-item/:orderId/:itemId", auth, removeItem);
 router.post("/api/order/update-item/:orderId", auth, editItem);
 
 module.exports = router;

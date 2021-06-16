@@ -134,13 +134,13 @@ module.exports = {
     }
   },
   removeItem: async (req, res) => {
-    let { orderId } = req.params;
+    let { orderId, itemId } = req.params;
 
     let order = await Order.findOne({ _id: orderId });
     if (!order) return res.status(404).send("order not found");
 
     if (order.status === "pending" && order.customer == req.user._id) {
-      order.items.id(addressId).remove();
+      order.items.id(itemId).remove();
       order = await order.save();
       res.send("order has been removed");
     } else {

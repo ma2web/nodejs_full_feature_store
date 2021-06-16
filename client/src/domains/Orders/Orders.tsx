@@ -140,16 +140,24 @@ const Orders = () => {
             <h4>سفارشات</h4>
             <div className={classes.data}>
               {order?.items?.map((el) => {
-                let selectedSize = el?.size;
-                let allSizes = el?.item?.sizes;
-                let filterSize = allSizes.find(
-                  (el) => el?._id === selectedSize
-                );
+                let selectedSize, allSizes, filterSize;
+
+                if (el?.size) {
+                  selectedSize = el?.size;
+                  allSizes = el?.item?.sizes;
+
+                  filterSize = allSizes.find((el) => el?._id === selectedSize);
+                }
                 return (
                   <div key={el?._id} className={classes.items}>
                     <div>{el?.item?.name}</div>
-                    <div>{filterSize?.size}</div>
-                    <div>{filterSize?.price}</div>
+                    <div>x{el?.count}</div>
+                    <div>
+                      {filterSize?.size ? filterSize?.size : "سایز ندارد"}
+                    </div>
+                    <div>
+                      {filterSize?.price ? filterSize?.price : el?.item?.price}
+                    </div>
                   </div>
                 );
               })}

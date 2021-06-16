@@ -42,6 +42,7 @@ module.exports = {
       comments: Joi.array().items(Joi.string()),
       categories: Joi.array().items(Joi.string()),
       discount: Joi.number(),
+      view: Joi.number(),
     });
 
     return schema.validate(data);

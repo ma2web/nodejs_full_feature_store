@@ -13,7 +13,7 @@ export const useDashboardStyle = makeGolStyles(
     },
     childrenContent: {
       width: "100%",
-      height: "100vh",
+      height: "calc(100vh - 88px)",
       overflow: "auto",
     },
     myDesk: {

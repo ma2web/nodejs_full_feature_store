@@ -15,6 +15,9 @@ export const useOrdersStyles = makeGolStyles<{ changeStatus: boolean }>(
       borderBottom: `1px solid ${palette.neutral[200]}`,
       display: "flex",
       justifyContent: "space-between",
+      "& div": {
+        width: "25%",
+      },
     },
     status: {
       padding: spacing(0, 2),

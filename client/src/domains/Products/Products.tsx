@@ -16,7 +16,7 @@ const Header = () => (
     <th>قیمت</th>
     <th>دسته بندی ها</th>
     <th>تعداد موجود در انبار</th>
-    <th>حذف مورد</th>
+    {/* <th>حذف مورد</th> */}
   </tr>
 );
 
@@ -37,7 +37,7 @@ const Row = ({ data, push, classes, setProducts }) => (
           ))}
         </td>
         <td>{el?.stock}</td>
-        <td
+        {/* <td
           onClick={(e) => {
             e.stopPropagation();
             let confirm = window.confirm("آیا از حذف این مورد مطمئن هستید؟");
@@ -62,7 +62,7 @@ const Row = ({ data, push, classes, setProducts }) => (
           }}
         >
           <span className={classes.error}>حذف</span>
-        </td>
+        </td> */}
       </tr>
     ))}
   </>

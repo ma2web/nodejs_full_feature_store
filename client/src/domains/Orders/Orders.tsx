@@ -62,12 +62,11 @@ const Orders = () => {
 
   const [changeStatus, setChangeStatus] = useState(false);
   const classes = useOrdersStyles({ changeStatus });
-  const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(10);
+  console.log(socket);
 
   useEffect(() => {
     axios
-      .get(`${api}/api/order/${page}/${limit}`, {
+      .get(`${api}/api/order`, {
         headers: {
           "x-auth-token": localStorage.token,
         },
@@ -77,6 +76,8 @@ const Orders = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  console.log(order);
 
   return (
     <div>
@@ -100,7 +101,7 @@ const Orders = () => {
         )}
       </div>
 
-      {showDetails && order ? (
+      {showDetails ? (
         <GolModal>
           <h2>جزئیات سفارش</h2>
           <br />
@@ -138,24 +139,20 @@ const Orders = () => {
           <div>
             <h4>سفارشات</h4>
             <div className={classes.data}>
-              {order?.items?.length > 0 ? (
-                <>
-                  {order?.items?.map((el) => {
-                    let selectedSize = el?.size;
-                    let allSizes = el?.item?.sizes;
-                    let filterSize = allSizes?.find(
-                      (el) => el?._id === selectedSize
-                    );
-                    return (
-                      <div key={el?._id} className={classes.items}>
-                        <div>{el?.item?.name}</div>
-                        <div>{filterSize?.size}</div>
-                        <div>{filterSize?.price}</div>
-                      </div>
-                    );
-                  })}
-                </>
-              ) : null}
+              {order?.items?.map((el) => {
+                let selectedSize = el?.size;
+                let allSizes = el?.item?.sizes;
+                let filterSize = allSizes.find(
+                  (el) => el?._id === selectedSize
+                );
+                return (
+                  <div key={el?._id} className={classes.items}>
+                    <div>{el?.item?.name}</div>
+                    <div>{filterSize?.size}</div>
+                    <div>{filterSize?.price}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <br />

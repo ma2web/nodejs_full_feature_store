@@ -24,6 +24,7 @@ module.exports = {
       const orders = await Order.find({ store: user._id })
         .populate("store")
         .populate("customer")
+        .populate("items.item")
         .sort({ updatedAt: -1 });
 
       res.send(orders);

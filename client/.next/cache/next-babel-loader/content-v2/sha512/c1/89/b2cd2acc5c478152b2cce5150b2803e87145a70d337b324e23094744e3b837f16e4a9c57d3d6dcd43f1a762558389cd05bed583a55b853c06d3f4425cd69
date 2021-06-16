@@ -1,1 +1,0 @@
-{"ast":null,"code":"// export const api = \"http://localhost:8989\";\nexport var api = \"http://185.247.119.178:8989\";","map":null,"metadata":{},"sourceType":"module"}

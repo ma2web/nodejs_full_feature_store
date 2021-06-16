@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { makeGolStyles } from \"theme\";\nexport const useOrdersStyles = makeGolStyles(({\n  palette,\n  spacing\n}) => ({\n  root: {}\n}), {\n  name: \"orders\"\n});\nexport default useOrdersStyles;","map":null,"metadata":{},"sourceType":"module"}

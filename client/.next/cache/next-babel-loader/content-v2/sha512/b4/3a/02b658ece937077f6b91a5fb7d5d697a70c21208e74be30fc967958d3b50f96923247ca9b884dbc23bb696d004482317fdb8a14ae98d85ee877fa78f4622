@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport Dashboard from \"domains/Dashboard\";\n\nvar DashboardPage = function DashboardPage() {\n  return /*#__PURE__*/_jsx(Dashboard, {});\n};\n\nDashboardPage.Layout = true;\nexport default DashboardPage;","map":null,"metadata":{},"sourceType":"module"}

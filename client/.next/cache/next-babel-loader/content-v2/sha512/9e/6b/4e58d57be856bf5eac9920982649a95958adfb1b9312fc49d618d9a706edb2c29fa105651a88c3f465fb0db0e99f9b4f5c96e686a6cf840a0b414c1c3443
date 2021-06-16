@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default } from './AuthLayout';","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/domains/Auth/components/AuthLayout/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,cAAxB","sourcesContent":["export { default } from './AuthLayout'\n"]},"metadata":{},"sourceType":"module"}

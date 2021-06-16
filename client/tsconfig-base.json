@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "paths": {
-      "test-utils": ["./utils/testUtils.tsx"]
-    }
-  }
-}

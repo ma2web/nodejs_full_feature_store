@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { defineMessages } from \"react-intl\";\nconst scope = \"panel.notifications\";\nconst NotificationsMessages = defineMessages({\n  notifications: {\n    id: `${scope}.notifications`,\n    defaultMessage: \"Notifications\"\n  }\n});\nexport default NotificationsMessages;","map":null,"metadata":{},"sourceType":"module"}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport Categories from \"domains/Categories\";\n\nconst CategoriesPage = () => {\n  return /*#__PURE__*/_jsx(Categories, {});\n};\n\nCategoriesPage.Layout = true;\nexport default CategoriesPage;","map":null,"metadata":{},"sourceType":"module"}

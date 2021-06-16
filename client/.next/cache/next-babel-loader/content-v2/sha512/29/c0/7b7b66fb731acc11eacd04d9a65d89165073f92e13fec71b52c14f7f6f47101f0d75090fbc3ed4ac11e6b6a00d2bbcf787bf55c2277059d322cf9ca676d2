@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { makeGolStyles } from \"theme\";\nexport default makeGolStyles(function (_ref) {\n  var spacing = _ref.spacing,\n      palette = _ref.palette,\n      direction = _ref.direction;\n  return {\n    root: {}\n  };\n}, {\n  name: \"LanguageSelector\"\n});","map":null,"metadata":{},"sourceType":"module"}

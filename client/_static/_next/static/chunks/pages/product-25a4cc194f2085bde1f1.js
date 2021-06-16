@@ -1,1 +1,0 @@
-_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[18],{"+cZo":function(n,o,c){(window.__NEXT_P=window.__NEXT_P||[]).push(["/product",function(){return c("yCkV")}])},yCkV:function(n,o,c){"use strict";c.r(o);var t=c("nKUr"),u=c("c5dM"),_=function(){return Object(t.jsx)(u.a,{})};_.Layout=!0,o.default=_}},[["+cZo",0,1,2,3,4,10]]]);

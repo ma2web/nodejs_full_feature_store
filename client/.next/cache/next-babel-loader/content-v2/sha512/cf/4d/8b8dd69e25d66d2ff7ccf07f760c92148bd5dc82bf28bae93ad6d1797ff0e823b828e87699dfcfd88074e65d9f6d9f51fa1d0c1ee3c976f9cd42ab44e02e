@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default } from \"./PrivateChat\";","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/layout/CI/Layout/components/chat/PrivateChat/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,eAAxB","sourcesContent":["export { default } from \"./PrivateChat\";\n"]},"metadata":{},"sourceType":"module"}

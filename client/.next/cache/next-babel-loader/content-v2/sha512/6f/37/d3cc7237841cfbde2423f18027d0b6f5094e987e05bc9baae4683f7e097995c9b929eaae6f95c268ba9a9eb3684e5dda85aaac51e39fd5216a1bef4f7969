@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default } from \"./Table\";","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/components/Table/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,SAAxB","sourcesContent":["export { default } from \"./Table\";\n"]},"metadata":{},"sourceType":"module"}

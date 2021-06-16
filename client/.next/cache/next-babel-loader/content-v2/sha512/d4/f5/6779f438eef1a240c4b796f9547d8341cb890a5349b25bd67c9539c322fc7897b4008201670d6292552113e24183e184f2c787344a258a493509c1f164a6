@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport AddProduct from \"domains/Products/components/AddProduct\";\n\nconst AddProductPage = () => {\n  return /*#__PURE__*/_jsx(AddProduct, {});\n};\n\nAddProductPage.Layout = true;\nexport default AddProductPage;","map":null,"metadata":{},"sourceType":"module"}

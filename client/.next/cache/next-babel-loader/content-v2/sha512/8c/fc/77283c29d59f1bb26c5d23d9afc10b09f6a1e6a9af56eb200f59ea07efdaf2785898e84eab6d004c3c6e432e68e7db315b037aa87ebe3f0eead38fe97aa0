@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { defineMessages } from \"react-intl\";\nvar scope = \"panel.categories\";\nvar CategoriesMessages = defineMessages({\n  categories: {\n    id: \"\".concat(scope, \".categories\"),\n    defaultMessage: \"Categories\"\n  }\n});\nexport default CategoriesMessages;","map":null,"metadata":{},"sourceType":"module"}

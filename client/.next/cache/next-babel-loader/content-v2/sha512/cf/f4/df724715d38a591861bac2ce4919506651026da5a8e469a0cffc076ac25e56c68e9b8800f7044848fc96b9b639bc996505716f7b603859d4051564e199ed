@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default } from \"./Favarites\";","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/layout/CI/Layout/components/sidebar/components/favarites/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,aAAxB","sourcesContent":["export { default } from \"./Favarites\";\n"]},"metadata":{},"sourceType":"module"}

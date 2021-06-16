@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { defineMessages } from \"react-intl\";\nconst scope = \"panel.orders\";\nconst OrdersMessages = defineMessages({\n  orders: {\n    id: `${scope}.orders`,\n    defaultMessage: \"Orders\"\n  }\n});\nexport default OrdersMessages;","map":null,"metadata":{},"sourceType":"module"}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default } from './GolButton';","map":{"version":3,"sources":["/home/mohammad/projects/dorreh/market multi/client/src/components/GolButton/index.ts"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,aAAxB","sourcesContent":["export { default } from './GolButton'\n"]},"metadata":{},"sourceType":"module"}

@@ -17,7 +17,7 @@
   "panel.dashboard.administrator": "مدیر",
   "panel.messanger.messaging": "ارسال محصول",
 
-  "panel.auth.SingInPage.subTitle": "اجازه تغییر به دنیا بده!",
+  "panel.auth.SingInPage.subTitle": "پنل مدیریت محصولات فروشگاه",
   "panel.auth.SingInPage.title": "خوش آمدید",
   "panel.auth.SingInPage.email": "ایمیل",
   "panel.auth.SingInPage.phone": "همراه",
@@ -37,7 +37,7 @@
   "panel.auth.SignUpPageM.signIn": "ورود",
   "panel.auth.SignUpPageM.signUp": "ثبت نام",
   "panel.auth.SignUpPageM.title": "عضویت",
-  "panel.auth.SignUpPageM.subTitle": "اجازه تغییر به دنیا بده!",
+  "panel.auth.SignUpPageM.subTitle": "پنل مدیریت محصولات فروشگاه",
   "panel.auth.SignUpPageM.phoneWay": "عضویت با شماره موبایل",
   "panel.auth.SignUpPageM.emailWay": "عضویت با ایمیل",
   "panel.auth.SignUpPageM.phoneInput": "شماره موبایل",

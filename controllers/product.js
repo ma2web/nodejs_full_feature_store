@@ -41,7 +41,8 @@ module.exports = {
     if (userId) {
       products = await Product.find({ user: userId })
         .populate("categories")
-        .populate("user");
+        .populate("user")
+        .populate("comments.user");
     } else {
       products = await Product.find({}).populate("categories").populate("user");
     }

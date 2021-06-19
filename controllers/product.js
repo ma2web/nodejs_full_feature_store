@@ -49,7 +49,10 @@ module.exports = {
     return res.json(products);
   },
   popular: async (req, res) => {
-    let popular = await Product.find({}).sort({ view: -1 });
+    let popular = await Product.find({})
+      .populate("comments.user")
+      .sort({ view: -1 });
+
     res.send(popular);
   },
   getOne: async (req, res) => {
@@ -59,6 +62,7 @@ module.exports = {
       _id: id,
     })
       .populate("categories")
+      .populate("comments.user")
       .populate("user")
       .then(async (data) => {
         if (!data) return res.status(404).send("not found");

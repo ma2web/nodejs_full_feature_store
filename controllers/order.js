@@ -164,7 +164,7 @@ module.exports = {
       if (count) orderf.count = count;
       if (size) orderf.size = size;
 
-      await user.save();
+      await order.save();
       res.send("order has been updated");
     } else {
       res

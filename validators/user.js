@@ -21,6 +21,7 @@ module.exports = {
       phoneNumber: Joi.string().required().max(10).min(10),
       password: Joi.string().required(),
       role: Joi.string().required(),
+      store: Joi.object(),
     });
 
     return schema.validate(data);

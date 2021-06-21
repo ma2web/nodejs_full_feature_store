@@ -162,7 +162,6 @@ module.exports = {
 
       if (item) orderf.item = item;
       if (count) orderf.count = count;
-      if (phoneNumber) orderf.phoneNumber = phoneNumber;
       if (size) orderf.size = size;
 
       await user.save();

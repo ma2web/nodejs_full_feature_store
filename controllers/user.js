@@ -37,9 +37,9 @@ admin.initializeApp({
 });
 
 const twilio = {
-  accountSid: "AC0d4fef5a4fee339f32f41bf319548627",
-  authToken: "588ce053bc2550492eb91bee001e93fa",
-  from: "+18129934450",
+  accountSid: "ACa26d572118dc4f2ab2e759c6b63a7cd6",
+  authToken: "0dffe442ed7b0997880c454efd1a28be",
+  from: "+13853991842",
 };
 
 const myCache = new NodeCache({

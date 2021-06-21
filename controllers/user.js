@@ -342,6 +342,7 @@ module.exports = {
       .then((message) => {
         res.send({
           code,
+          status: "sent",
         });
       })
       .catch(() => {

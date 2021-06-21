@@ -123,7 +123,7 @@ module.exports = {
     let order = await Order.findOne({ _id: orderId });
     if (!order) return res.status(404).send("order not found");
 
-    if (order.status === "pending" && order.customer == req.user._id) {
+    if (order.status === "pending") {
       order.items.push(item);
       order = await order.save();
       res.send("order has been added");
@@ -139,7 +139,7 @@ module.exports = {
     let order = await Order.findOne({ _id: orderId });
     if (!order) return res.status(404).send("order not found");
 
-    if (order.status === "pending" && order.customer == req.user._id) {
+    if (order.status === "pending") {
       order.items.id(itemId).remove();
       order = await order.save();
       res.send("order has been removed");
@@ -156,7 +156,7 @@ module.exports = {
     let order = await Order.findOne({ _id: orderId });
     if (!order) return res.status(404).send("order not found");
 
-    if (order.status === "pending" && order.customer == req.user._id) {
+    if (order.status === "pending") {
       let orderf = order.items.id(orderId);
       if (!orderf) return res.status(404).send("order not found");
 

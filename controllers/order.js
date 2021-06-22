@@ -157,12 +157,11 @@ module.exports = {
     if (!order) return res.status(404).send("order not found");
 
     if (order.status === "pending" && order.customer == req.user._id) {
-      let orderf = order.items.id(item);
-      if (!orderf) return res.status(404).send("order not found");
+      let _item = order.items.id(item);
+      if (!_item) return res.status(404).send("order not found");
 
-      if (item) orderf.item = item;
-      if (count) orderf.count = count;
-      if (size) orderf.size = size;
+      if (count) _item.count = count;
+      if (size) _item.size = size;
 
       await order.save();
       res.send("order has been updated");

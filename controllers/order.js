@@ -171,4 +171,31 @@ module.exports = {
         .send("order status is not pending or this is not your order");
     }
   },
+  checkAvailability: async (req, res) => {
+    let { items } = req.body;
+
+    outOfStocks = [];
+    availables = [];
+
+    console.log(availables);
+    for (i = 0; i < items.length; i++) {
+      let product = await Product.findOne({ _id: items[i].item });
+
+      if (product.stock >= items[i].count) {
+        let data = {
+          product,
+          item: items[i],
+        };
+        availables.push(data);
+      } else {
+        let data = {
+          product,
+          item: items[i],
+        };
+        outOfStocks.push(data);
+      }
+    }
+
+    res.send({ outOfStocks, availables });
+  },
 };

@@ -11,6 +11,7 @@ const {
   addItem,
   removeItem,
   editItem,
+  checkAvailability,
 } = require("../controllers/order");
 
 const auth = require("../middlwares/auth");
@@ -26,5 +27,6 @@ router.put("/api/order/:id", auth, update);
 router.post("/api/order/add-item/:orderId", auth, addItem);
 router.delete("/api/order/remove-item/:orderId/:itemId", auth, removeItem);
 router.post("/api/order/update-item/:orderId", auth, editItem);
+router.post("/api/order/check-available", auth, checkAvailability);
 
 module.exports = router;

@@ -16,6 +16,7 @@ const multer = require("multer");
 const NodeCache = require("node-cache");
 
 let admin = require("firebase-admin");
+const product = require("../models/product");
 let settings = {
   type: "service_account",
   project_id: "shopparsii",
@@ -441,5 +442,21 @@ module.exports = {
 
     await user.save();
     res.send("address has been removed");
+  },
+  userComments: async (req, res) => {
+    let { _id } = req.user;
+
+    let userComments = await product.find({
+      "comments.user": _id,
+    });
+
+    let result = userComments.map((el) => {
+      return {
+        comment: el.comments.filter((c) => c.user == _id),
+        product: el._id,
+      };
+    });
+
+    res.send(result);
   },
 };

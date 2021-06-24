@@ -76,9 +76,9 @@ process.on("unhandledRejection", (error) => winston.error(error.message));
 // views
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.static(path.join(__dirname, "./views")));
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./views", "chat.html"));
-});
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "./views", "chat.html"));
+// });
 
 // connect to db
 mongoose.connect(

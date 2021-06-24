@@ -453,7 +453,7 @@ module.exports = {
     let result = userComments.map((el) => {
       return {
         comment: el.comments.filter((c) => c.user == _id),
-        product: el._id,
+        product: el,
       };
     });
 

@@ -44,12 +44,15 @@ module.exports = {
         .populate("user")
         .populate("comments.user");
     } else {
-      products = await Product.find({}).populate("categories").populate("user");
+      products = await Product.find()
+        .populate("categories")
+        .populate("user")
+        .populate("comments.user");
     }
     return res.json(products);
   },
   popular: async (req, res) => {
-    let popular = await Product.find({})
+    let popular = await Product.find()
       .populate("comments.user")
       .sort({ view: -1 });
 

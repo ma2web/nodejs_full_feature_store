@@ -1,4 +1,5 @@
 const Category = require("../models/category");
+const Order = require("../models/order");
 const Product = require("../models/product");
 const { createValidator, updateValidator } = require("../validators/product");
 const path = require("path");
@@ -313,5 +314,27 @@ module.exports = {
     );
 
     res.send(result);
+  },
+  chart: async (req, res) => {
+    let orders = await Order.find({ user: req.user._id }).populate(
+      "items.item"
+    );
+
+    let users = orders;
+    var obj = {};
+
+    for (var i = 0, len = users.length; i < len; i++)
+      obj[users[i]["customer"]] = users[i];
+
+    users = new Array();
+    for (var key in obj) users.push(obj[key]);
+
+    orders = orders
+      .map((order) => {
+        return { items: order.items, customer: order.customer };
+      })
+      .flat();
+
+    res.send({ users: users.length, orders: orders.length });
   },
 };

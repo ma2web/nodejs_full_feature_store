@@ -329,6 +329,9 @@ module.exports = {
     let phoneNumber = req.body.phoneNumber;
     let countryCode = req.body.countryCode;
 
+    let existUser = await User.findOne({ phoneNumber, countryCode });
+    if (existUser) return res.status(404).send("user already exist");
+
     let code = parseInt(Math.random() * 9000 + 1000);
 
     myCache.set(phoneNumber, code);

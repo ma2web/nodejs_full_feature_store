@@ -21,6 +21,7 @@ const {
   uploadImage,
   categoryProduct,
   popular,
+  chart,
 } = require("../controllers/product");
 
 const auth = require("../middlwares/auth");
@@ -46,6 +47,7 @@ router.post(
   auth,
   removeCategoryFromProduct
 );
+router.get("/api/chart", auth, chart);
 router.post("/api/product/tag/:productId", auth, addTag);
 router.post("/api/product/remove-tag/:productId", auth, removeTag);
 router.post("/api/product/size/:productId", [auth, admin], addSize);

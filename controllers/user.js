@@ -338,7 +338,38 @@ module.exports = {
 
     client.messages
       .create({
-        body: `Your verification code is:` + code,
+        body: `Your verification code is: ` + code,
+        from,
+        to: `+${countryCode}${phoneNumber}`,
+      })
+      .then((message) => {
+        res.send({
+          code,
+          status: "sent",
+        });
+      })
+      .catch(() => {
+        console.log(err);
+        return res.status(500).send(err);
+      });
+  },
+  sendCodeToUsers: async (req, res) => {
+    let phoneNumber = req.body.phoneNumber;
+    let countryCode = req.body.countryCode;
+
+    let existUser = await User.find({ phoneNumber });
+    if (!existUser) return res.status(404).send("user not found");
+
+    let code = parseInt(Math.random() * 9000 + 1000);
+
+    myCache.set(phoneNumber, code);
+    let { accountSid, authToken, from } = twilio;
+
+    const client = require("twilio")(accountSid, authToken);
+
+    client.messages
+      .create({
+        body: `Your verification code is: ` + code,
         from,
         to: `+${countryCode}${phoneNumber}`,
       })

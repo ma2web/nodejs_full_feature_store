@@ -13,8 +13,30 @@ module.exports = {
     res.json(categories);
   },
   popular: async (req, res) => {
-    let popular = await Category.find({}).sort({ view: -1 });
-    res.send(popular);
+    await Category.aggregate([
+      {
+        $lookup: {
+          from: "products",
+          localField: "_id",
+          foreignField: "categories",
+          as: "products",
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          name: 1,
+          products: { $size: "$products" },
+          description: 1,
+          view: 1,
+          createdAt: 1,
+          updatedAt: 1,
+        },
+      },
+    ]).exec(function (err, result) {
+      if (err) throw err;
+      res.send(result);
+    });
   },
   getOne: async (req, res) => {
     await Category.findOne({ _id: req.params.id })

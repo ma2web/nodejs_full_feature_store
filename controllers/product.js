@@ -316,8 +316,10 @@ module.exports = {
     res.send(result);
   },
   chart: async (req, res) => {
+    let { user } = req;
     let orders = await Order.find().populate("items.item");
 
+    console.log({ user, orders });
     let users = orders;
     var obj = {};
 

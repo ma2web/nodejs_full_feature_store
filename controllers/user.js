@@ -96,6 +96,7 @@ module.exports = {
         "phoneNumber",
         "password",
         "role",
+        "store",
       ])
     );
 
@@ -116,6 +117,7 @@ module.exports = {
       "countryCode",
       "phoneNumber",
       "role",
+      "store",
     ]);
 
     res.header("x-auth-token", token).send({ ...data, token });

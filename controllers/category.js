@@ -9,8 +9,35 @@ module.exports = {
 
     if (user) query = { user };
 
-    let categories = await Category.find(query).populate("user");
-    res.json(categories);
+    if (user) {
+      let categories = await Category.find(query).populate("user");
+      res.send(categories);
+    } else {
+      await Category.aggregate([
+        {
+          $lookup: {
+            from: "products",
+            localField: "_id",
+            foreignField: "categories",
+            as: "products",
+          },
+        },
+        {
+          $project: {
+            _id: 1,
+            name: 1,
+            products: { $size: "$products" },
+            description: 1,
+            view: 1,
+            createdAt: 1,
+            updatedAt: 1,
+          },
+        },
+      ]).exec(function (err, result) {
+        if (err) throw err;
+        res.send(result);
+      });
+    }
   },
   popular: async (req, res) => {
     await Category.aggregate([

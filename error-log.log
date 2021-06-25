@@ -576,3 +576,11 @@
 {"level":"error","message":"Cannot read property 'filter' of undefined Cannot read property 'filter' of undefined","stack":"TypeError: Cannot read property 'filter' of undefined\n    at userComments (/home/mohammad/projects/dorreh/Multi/server/controllers/user.js:453:40)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)"}
 {"message":"$lookup argument 'sort' must be a string, found sort: { view: -1 }: object","level":"error"}
 {"message":"$lookup argument 'sort' must be a string, found sort: { view: -1 }: object","level":"error"}
+{"message":"Operation `categories.aggregate()` buffering timed out after 10000ms","level":"error"}
+{"level":"error","message":"Operation `categories.find()` buffering timed out after 10000ms Operation `categories.find()` buffering timed out after 10000ms","stack":"MongooseError: Operation `categories.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mohammad/projects/dorreh/Multi/server/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:185:20)\n    at listOnTimeout (internal/timers.js:554:17)\n    at processTimers (internal/timers.js:497:7)"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"level":"error","message":"Operation `categories.find()` buffering timed out after 10000ms Operation `categories.find()` buffering timed out after 10000ms","stack":"MongooseError: Operation `categories.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mohammad/projects/dorreh/Multi/server/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:185:20)\n    at listOnTimeout (internal/timers.js:554:17)\n    at processTimers (internal/timers.js:497:7)"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}
+{"message":"listen EADDRINUSE: address already in use :::8989","level":"error"}

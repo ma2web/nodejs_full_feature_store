@@ -338,7 +338,7 @@ module.exports = {
 
     client.messages
       .create({
-        body: `Your verification code is: ` + code,
+        body: `کاربر گرامی مارکت کد امنیتی شما: ${code} میباشد`,
         from,
         to: `+${countryCode}${phoneNumber}`,
       })
@@ -357,7 +357,7 @@ module.exports = {
     let phoneNumber = req.body.phoneNumber;
     let countryCode = req.body.countryCode;
 
-    let existUser = await User.find({ phoneNumber });
+    let existUser = await User.findOne({ phoneNumber, countryCode });
     if (!existUser) return res.status(404).send("user not found");
 
     let code = parseInt(Math.random() * 9000 + 1000);
@@ -369,7 +369,7 @@ module.exports = {
 
     client.messages
       .create({
-        body: `Your verification code is: ` + code,
+        body: `کاربر گرامی مارکت کد امنیتی شما: ${code} میباشد`,
         from,
         to: `+${countryCode}${phoneNumber}`,
       })

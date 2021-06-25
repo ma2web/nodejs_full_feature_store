@@ -30,7 +30,7 @@ router.get("/api/user/me", auth, me);
 router.put("/api/user/:id", auth, update);
 router.post("/api/user/upload/:id", upload);
 router.post("/api/user/otp", sendCode);
-router.post("/api/user/otp-signin", sendCodeToUsers);
+router.post("/api/user/send-code", sendCodeToUsers);
 router.post("/api/user/verify", verifyCode);
 router.get("/api/user/comments", auth, userComments);
 router.post("/api/user/address/add/:userId", addAddress);

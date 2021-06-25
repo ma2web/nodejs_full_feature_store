@@ -316,7 +316,7 @@ module.exports = {
     res.send(result);
   },
   chart: async (req, res) => {
-    let orders = await Order.find({ user: req.user._id }).populate(
+    let orders = await Order.find({ store: req.user._id }).populate(
       "items.item"
     );
 

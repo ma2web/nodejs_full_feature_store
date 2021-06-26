@@ -15,6 +15,7 @@ exports.modules = {
       "public/uploads/admin/category",
       "public/uploads/admin/product",
       "public/uploads/customer",
+      "public/uploads/slider",
     ];
 
     for (dir of dirs) {

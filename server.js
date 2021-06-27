@@ -30,7 +30,6 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const { uuidv4 } = require("uuid");
 const io = new Server(server, {
   pingInterval: 10000,
   pingTimeout: 5000,

@@ -123,6 +123,9 @@ module.exports = {
     let order = await Order.findOne({ _id: orderId });
     if (!order) return res.status(404).send("order not found");
 
+    let foundItem = await Product.findOne({ _id: item.item });
+    if (!foundItem) return res.status(404).send("item is wroge");
+
     if (order.status === "pending" && order.customer == req.user._id) {
       order.items.push(item);
       order = await order.save();

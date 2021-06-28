@@ -1,0 +1,38 @@
+{
+  "short_name": "Market",
+  "name": "Market",
+  "icons": [
+    {
+      "src": "/Logo_32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/Logo_64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "/Logo_128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Logo_256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/images/640x1136.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "homepage": "/",
+  "orientation": "portrait",
+  "display": "standalone",
+  "theme_color": "#0066FF",
+  "background_color": "#EFF4F8"
+}

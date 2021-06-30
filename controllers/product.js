@@ -39,6 +39,7 @@ module.exports = {
   getAll: async (req, res) => {
     let userId = req.params.userId;
     let products;
+    let avg;
     if (userId) {
       products = await Product.find({ user: userId })
         .populate("categories")
@@ -49,8 +50,25 @@ module.exports = {
         .populate("categories")
         .populate("user")
         .populate("comments.user");
+      avg = await Product.aggregate([
+        { $addFields: { avgRate: { $avg: "$comments.rate" } } },
+      ]).exec(function (err, products) {
+        if (err) return res.status(500).send(err);
+        // Don't forget your error handling
+        // The callback with your transactions
+        // Assuming you are having a Tag model
+        Product.populate(
+          products,
+          { path: "categories user" },
+          function (err, result) {
+            // Your populated translactions are inside populatedTransactions
+            if (err) return res.status(500).send(err);
+
+            return res.send(result);
+          }
+        );
+      });
     }
-    return res.json(products);
   },
   popular: async (req, res) => {
     let popular = await Product.find()

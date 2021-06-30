@@ -28,7 +28,7 @@ let commentSchema = new mongoose.Schema(
 let schema = new mongoose.Schema(
   {
     user: rref("user"),
-    name: { ...rs, unique: true },
+    name: rs,
     description: s,
     images: [s],
     price: rn,

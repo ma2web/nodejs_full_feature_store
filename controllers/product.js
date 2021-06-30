@@ -46,22 +46,14 @@ module.exports = {
         .populate("user")
         .populate("comments.user");
     } else {
-      products = await Product.find()
-        .populate("categories")
-        .populate("user")
-        .populate("comments.user");
       avg = await Product.aggregate([
         { $addFields: { avgRate: { $avg: "$comments.rate" } } },
       ]).exec(function (err, products) {
         if (err) return res.status(500).send(err);
-        // Don't forget your error handling
-        // The callback with your transactions
-        // Assuming you are having a Tag model
         Product.populate(
           products,
           { path: "categories user" },
           function (err, result) {
-            // Your populated translactions are inside populatedTransactions
             if (err) return res.status(500).send(err);
 
             return res.send(result);
@@ -79,6 +71,18 @@ module.exports = {
   },
   getOne: async (req, res) => {
     let { id } = req.params;
+
+    const getAvg = (data) => {
+      var sum = 0,
+        count = 0,
+        i;
+
+      for (i = 0; i < data.comments.length; i++) {
+        sum += data.comments[i].rate;
+        ++count;
+      }
+      return sum / count;
+    };
 
     await Product.findOne({
       _id: id,
@@ -98,7 +102,12 @@ module.exports = {
             (err, x) => {
               if (err) return res.status(400).send(err.message);
 
-              return res.send(data);
+              let avg =
+                data.comments.reduce((total, next) => total + next.rate, 0) /
+                data.comments.length;
+
+              let result = { ...data._doc, avgRate: avg };
+              return res.send(result);
             }
           );
         }

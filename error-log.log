@@ -1019,3 +1019,8 @@
 {"level":"error","message":"Product.aggregate(...).populate is not a function Product.aggregate(...).populate is not a function","stack":"TypeError: Product.aggregate(...).populate is not a function\n    at getAll (/home/mohammad/projects/dorreh/Multi/server/controllers/product.js:55:10)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)"}
 {"message":"utils.populate: invalid path. Expected string. Got typeof `function`","level":"error"}
 {"message":"utils.populate: invalid path. Expected string. Got typeof `object`","level":"error"}
+{"level":"error","message":"Cannot read property '_id' of undefined Cannot read property '_id' of undefined","stack":"TypeError: Cannot read property '_id' of undefined\n    at /home/mohammad/projects/dorreh/Multi/server/controllers/product.js:84:22\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)\n    at async getOne (/home/mohammad/projects/dorreh/Multi/server/controllers/product.js:75:5)"}
+{"message":"list is not defined","level":"error"}
+{"message":"list is not defined","level":"error"}
+{"message":"Invalid status code: 2","level":"error"}
+{"message":"Invalid status code: 2","level":"error"}

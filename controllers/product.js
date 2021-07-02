@@ -38,15 +38,26 @@ let storage = multer.diskStorage({ destination, filename });
 module.exports = {
   getAll: async (req, res) => {
     let userId = req.params.userId;
-    let products;
-    let avg;
+
     if (userId) {
-      products = await Product.find({ user: userId })
-        .populate("categories")
-        .populate("user")
-        .populate("comments.user");
+      console.log(userId);
+      let d = await Product.find({ user: userId });
+      await Product.aggregate([
+        { $addFields: { avgRate: { $avg: "$comments.rate" } } },
+      ]).exec(function (err, products) {
+        if (err) return res.status(500).send(err);
+        Product.populate(
+          products,
+          { path: "categories user" },
+          function (err, result) {
+            if (err) return res.status(500).send(err);
+
+            return res.send(result.filter((el) => el.user._id == userId));
+          }
+        );
+      });
     } else {
-      avg = await Product.aggregate([
+      await Product.aggregate([
         { $addFields: { avgRate: { $avg: "$comments.rate" } } },
       ]).exec(function (err, products) {
         if (err) return res.status(500).send(err);

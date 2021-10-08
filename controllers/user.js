@@ -18,29 +18,29 @@ const NodeCache = require("node-cache");
 let admin = require("firebase-admin");
 const product = require("../models/product");
 let settings = {
-  type: "service_account",
-  project_id: "shopparsii",
-  private_key_id: "1f9c6625bf6e21a352c0e2a34218ad21bf92d4a1",
+  type: "xxx",
+  project_id: "xxx",
+  private_key_id: "xxx",
   private_key:
-    "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCWjB4ANSXY96o7\nOKdnirK9j2FMD4WwU0rNp/uaKdNgzZ0/Z3dpuk15WQuclou12If8du5a8FXH17vQ\nQlOfe/YW/E7ju8mumxvqlj8jEFsVzv63SGwdU/B37i5TeYEUr0RuJFr++Z7rdaIT\nBRL0214nSh68a3IcMi0oEfshNTJ3KyfTb9v0wk6GigT3PD9yqFzAixFu0UxO295h\nrMzQvJJ2LlTf10ZPHCE+1KUd/8I37huPOo/HqGAms8vDv3icvayOnKFejz4Gj23+\nXVLACJJLZrDfMMn+Z5eSRzZK5COtr3eOydutTEastdd2tUC02BLofLOwHGTvQTfp\nRrkvnb9XAgMBAAECggEAQM7T0WoPv22qgjD629d456KUE46xEf1hO9QfOzfbL5aE\nJXnQjZquZFlBZujl/uPWcofuRwakHtIPn3EWF5dhEncOLPo3satDIsMILfuKAoLn\n4xXRuPRcFfzaQ4QQXcuvjSyoYZAq6hjrKv3psa/Hwekl/x3P8zRkfRX0glCox2SK\nzDe18U18h3p3qNLdkH9h0dZtFQYShLlJdFk9NHLrchH92DQh8JpYeAtac9jpdyzg\nZp4ZO6lAtjTcKteXRGb07tRBgfcOw+6eHF1w8/Sp2F2VYUM9IvKG0tR/F3XCsAax\npkeS5yD5EZcTw4MeU9jdHrYHxd2RRoWZWYbvJwUMQQKBgQDPQZU/anciREi+WoNM\ndceVxXWdDBw8VBd493Y6JEnSmDUydtOiRIgCjLivLymJfYK7Irn5EDxCIRslnSHp\n+Blw/8omdzsr5WXAKvg5YFhZAsKOxdd1LC9xmZV21jqwC2AY9WRiiYeR9a4BvlNO\nb0LA6gFxm2zGSBkMqPY4AGwOwQKBgQC59DmbDCN5xzrWKiZDurvQ5rXhBj8WJtdg\nmGqLMxGggL9f68jFnz1gXX7wl1HC2zNfDJcX9aSQLXZT6nv7gP4I76BZB0XWD0+Q\nAj99M8YTY/fWqxb83YKrqheuZ/SD1Bh3OxV1A4VCPvimnciEBMHHUxvTvMrQLrpf\n86sdqm9sFwKBgFO44HtvnJSBFQmgMq3uXiOIUoyQWc+dAKZjAKVYB2JFDihGjBNe\nr7qn8esCmDrsMqU5z/pmrpDgIsE9CngjOtPE4HpNa9+9mS7ZrNAwtT+vt7xI+1Jf\n+QJg0lnhDHAVCErMxjJv8A3sOtCFe82RcFvRq6ei63vloAjXMC9LLFuBAoGAYQtd\nzNbG5NTelcolcg9P2TOuE6OI5OycViL053RdbKAEP/DzNH9oLpRcnP67gq+W3bHa\nYHynxz6SlDS5Q4YMDWnRCuVKwu32nbcunw6X/qKbQwLC2nBXs3LvLOu/pdTYd9Dz\n379Ymjv21C1f6dX5syZiTVwnlAHu7ghicvbxcz0CgYEAli0a8yxlLW7GPpAr2D9q\nBp7sU/Im56QRBHDLdGRDcggjMId2q1JNQjbwXWkMx6Run0fdlC+wXdVKNc2VzMi/\nAbSsFB++9RbUrSsOUtL3wlbVwBI2psrYoJdMcl7SZk5T68ys8q3Z+ByrtXsJaOZB\nefWj2qytnb6h5vSttRwO8OY=\n-----END PRIVATE KEY-----\n",
-  client_email: "firebase-adminsdk-n3qwa@shopparsii.iam.gserviceaccount.com",
-  client_id: "105034828396913552527",
-  auth_uri: "https://accounts.google.com/o/oauth2/auth",
-  token_uri: "https://oauth2.googleapis.com/token",
-  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+    "xxx",
+  client_email: "xxx",
+  client_id: "xxx",
+  auth_uri: "xxx",
+  token_uri: "xxx",
+  auth_provider_x509_cert_url: "xxx",
   client_x509_cert_url:
-    "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-n3qwa%40shopparsii.iam.gserviceaccount.com",
+    "xxx",
 };
 
 admin.initializeApp({
   credential: admin.credential.cert(settings),
-  // databaseURL: "https://project-2503318739491532288.firebaseio.com",
+  // databaseURL: "https://xxxx",
 });
 
 const twilio = {
-  accountSid: "ACa26d572118dc4f2ab2e759c6b63a7cd6",
-  authToken: "0dffe442ed7b0997880c454efd1a28be",
-  from: "+13853991842",
+  accountSid: "xxx",
+  authToken: "xxx",
+  from: "xxx",
 };
 
 const myCache = new NodeCache({
